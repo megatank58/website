@@ -31,7 +31,11 @@ body {
   color: #35acf1;
 }
 
-.navbar .icon {
+.navbar .H-icon {
+  display: none;
+}
+
+.navbar .C-icon {
   display: none;
 }
 
@@ -39,7 +43,7 @@ body {
   .navbar a:not(:first-child) {
     display: none;
   }
-  .navbar a.icon {
+  .navbar a.H-icon {
     float: right;
     display: block;
   }
@@ -55,7 +59,13 @@ body {
       position: relative;
   }
 
-  .navbar.responsive a.icon {
+  .navbar.responsive a.H-icon {
+    display: none;
+  }
+
+  .navbar.responsive a.C-icon {
+    display: block;
+    float: right;
     position: absolute;
     right: 0;
     top: 0;
