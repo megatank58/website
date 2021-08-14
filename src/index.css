@@ -9,9 +9,7 @@ body {
   background-color: #202020;
   padding: 20px;
   display: flex;
-  border-radius: 15px;
   align-items: center;
-  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -55,7 +53,7 @@ body {
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      max-width: 600px;
+  
       position: relative;
   }
 
@@ -82,7 +80,6 @@ body {
 /* the project list for previews */
 
 .project-list {
-  max-width: 630px;
   display: flex;
   align-items: stretch;
   flex-direction: column;
@@ -95,7 +92,6 @@ body {
   background-color: #202020;
   padding: 10px 16px;
   margin: 20px 0;
-  border-radius: 15px;
   border-bottom: 1px solid #191919;
 }
 
