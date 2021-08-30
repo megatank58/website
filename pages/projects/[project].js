@@ -1,15 +1,8 @@
-import { useParams } from "react-router-dom";
-import LinkLogo from "./LinkLogo";
-import useFetch from "./useFetch";
+import LinkLogo from "../../components/LinkLogo";
 
-function ProjectDetails() {
-    const { id } = useParams();
-    const { data: projects, error, isPending } = useFetch('https://api.github.com/repos/Megatank58/' + id);
-
+export default function ProjectDetails({ projects }) {
     return (
         <div className="project-details">
-            {isPending && <div className="center white bold">Loading...</div>}
-            {error && <div>{error}</div>}
             {projects && (
                 <div className="project-list">
                     <article className="project-preview">
@@ -17,7 +10,7 @@ function ProjectDetails() {
                         <div className="white bold">{projects.description}</div>
                         <div className="bold" style={{ color: "#444", marginTop: "10px" }}>
                             Created: {new Date(projects.created_at).getDate() + '/' + (new Date(projects.created_at).getMonth() + 1) + '/' + new Date(projects.created_at).getFullYear()}
-                            <a href={'https://github.com/Megatank58/' + id} className="white bold" style={{ float: "right" }}>View<LinkLogo /></a>
+                            <a href={'https://github.com/Megatank58/' + projects.name} className="white bold" style={{ float: "right" }}>View<LinkLogo /></a>
                         </div>
                     </article>
                 </div>
@@ -26,4 +19,21 @@ function ProjectDetails() {
     );
 }
 
-export default ProjectDetails;
+export async function getStaticProps(context) {
+    const { project } = context.params;
+
+    const res = await fetch('https://api.github.com/repos/Megatank58/' + project);
+    const projects = await res.json();
+    return {
+        props: {
+            projects
+        },
+    }
+}
+
+export async function getStaticPaths() {
+    return {
+        paths: [],
+        fallback: "blocking"
+    }
+}
