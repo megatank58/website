@@ -3,13 +3,13 @@ import ProjectStyles from '../../styles/Project.module.css'
 
 function Project({ projects }) {
     return (
-        <div className={ProjectStyles.projectList}>
+        <div className={ProjectStyles.list}>
             {projects.map(project => (
-                <div className={ProjectStyles.projectPreview} key={project.name} >
-                    <Link href={`/projects/${project.name}`}  className="white bold" passHref>
-                        <a>
-                        <h2>{project.name}</h2>
-                        <p> {project.description}</p>
+                <div className={ProjectStyles.preview} key={project.name} >
+                    <Link href={`/projects/${project.name}`} passHref>
+                        <a className={`${ProjectStyles.white} ${ProjectStyles.bold}`}>
+                            <h2>{project.name}</h2>
+                            <p> {project.description}</p>
                         </a>
                     </Link>
                 </div>
