@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <div className={ProjectStyles.preview}>
       <Link href="/projects" passHref>
-        <a>
-          <h2 className={`${ProjectStyles.white} ${ProjectStyles.bold}`}>My Projects →</h2>
+        <a className={`${ProjectStyles.white}`}>
+          <h2 className={`${ProjectStyles.bold}`}>My Projects →</h2>
           <p>
             Projects on which im currently working on and contributing with
             GitHub
