@@ -1,6 +1,7 @@
 import LinkLogo from "./LinkLogo";
 import CloseLogo from "./CloseLogo";
 import HamburgerLogo from "./HamburgerLogo";
+import NavbarStyles from "../styles/Navbar.module.css";
 import Link from "next/link";
 
 function OnClick() {
@@ -15,15 +16,15 @@ function OnClick() {
 
 function Navbar() {
     return (
-        <div className="navbar" id="navbar">
-            <Link href="/" className="links bold active">
-                Megatank58
+        <div className={NavbarStyles.this} id="navbar">
+            <Link href="/">
+                <a className={`${NavbarStyles.links} ${NavbarStyles.white} ${NavbarStyles.bold} active`}>Megatank58</a>
             </Link>
-            <a href="https://discord.gg/fRVtnW8kY8" className="white bold" passHref>Discord<LinkLogo /></a>
-            <a href="https://github.com/Megatank58" className="white bold" passHref>GitHub<LinkLogo /></a>
-            <a href="https://github.com/CryptonDev/Crypton" className="white bold" passHref>Crypton<LinkLogo /></a>
-            <a className="H-icon" onClick={OnClick}><HamburgerLogo /></a>
-            <a className="C-icon" onClick={OnClick}><CloseLogo /></a>
+            <a href="https://discord.gg/fRVtnW8kY8" className={`${NavbarStyles.white} ${NavbarStyles.bold}`}>Discord<LinkLogo /></a>
+            <a href="https://github.com/Megatank58" className={`${NavbarStyles.white} ${NavbarStyles.bold}`}>GitHub<LinkLogo /></a>
+            <a href="https://github.com/CryptonDev/Crypton" className={`${NavbarStyles.white} ${NavbarStyles.bold}`}>Crypton<LinkLogo /></a>
+            <a className={NavbarStyles.Hicon} onClick={OnClick}><HamburgerLogo /></a>
+            <a className={NavbarStyles.Cicon} onClick={OnClick}><CloseLogo /></a>
         </div>
     )
 }

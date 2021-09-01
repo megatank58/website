@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import ProjectStyles from '../../styles/Project.module.css'
 
 function Project({ projects }) {
     return (
-        <div className="project-list">
+        <div className={ProjectStyles.projectList}>
             {projects.map(project => (
-                <div className="project-preview" key={project.name} >
+                <div className={ProjectStyles.projectPreview} key={project.name} >
                     <Link href={`/projects/${project.name}`}  className="white bold" passHref>
                         <a>
                         <h2>{project.name}</h2>

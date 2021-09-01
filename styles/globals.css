@@ -1,15 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
 body {
   background-color: #191919;
   margin-left: 30px;
   margin-right: 30px;
   margin-top: 0 auto;
+  font-family: Roboto;
 }
+
+a {
+  text-decoration: none;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* scroll bar */
 
 ::-webkit-scrollbar {
   width: 10px;
 }
-
-/* scroll bar */
 
 ::-webkit-scrollbar-track {
   background: #555;
@@ -21,31 +34,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
-}
-
-.white {
-  color: #f3f3f3;
-}
-
-.button {
-  color: white;
-  background-color: #35acf1;
-  border-radius: 8px;
-}
-
-.button:hover {
-  color: white;
-}
-
-.center {
-  text-align: center;
-}
-
-.bold {
-  font-family: system-ui;
-  font-weight: bold;
-}
-
-a {
-  text-decoration: none;
 }

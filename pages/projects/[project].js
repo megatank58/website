@@ -1,11 +1,12 @@
 import LinkLogo from "../../components/LinkLogo";
+import ProjectStyles from "../../styles/Project.module.css"
 
 export default function ProjectDetails({ projects }) {
     return (
-        <div className="project-details">
+        <div className={ProjectStyles.projectDetails}>
             {projects && (
-                <div className="project-list">
-                    <article className="project-preview">
+                <div className={ProjectStyles.projectList}>
+                    <article className={ProjectStyles.projectPreview}>
                         <h2 className="white bold">{projects.name}</h2>
                         <div className="white bold">{projects.description}</div>
                         <div className="bold" style={{ color: "#444", marginTop: "10px" }}>
