@@ -6,13 +6,11 @@ function Project({ projects }) {
         <div className={ProjectStyles.list}>
             {projects.map(project => (
 				<div className={ProjectStyles.preview} key={project.name}>
-					<h2>
 						<Link href={`/projects/${project.name}`} passHref>
 							<a className={`${ProjectStyles.white} ${ProjectStyles.bold}`}>
-								{project.name}
+								<h2>{project.name}</h2>
 							</a>
 						</Link>
-					</h2>
 					<p className={`${ProjectStyles.white}`}>{project.description}</p>
 				</div>
             ))}
