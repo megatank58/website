@@ -1,13 +1,17 @@
 import { unified } from 'unified';
+import { createElement } from 'react';
 import parse from 'remark-parse';
-import react from 'remark-react';
+import rehypePrism from "@mapbox/rehype-prism";
+import remark2rehype from "remark-rehype";
+import rehype2react from "rehype-react";
 import LinkLogo from "../../components/LinkLogo";
 import ProjectStyles from "../../styles/Project.module.css"
-import { createElement } from 'react';
 
 const parser = unified()
     .use(parse)
-    .use(react, { createElement: createElement })
+    .use(remark2rehype)
+    .use(rehypePrism)
+    .use(rehype2react, { createElement: createElement })
 
 export default function ProjectDetails({ projects }) {
     return (

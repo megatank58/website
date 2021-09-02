@@ -5,14 +5,14 @@ function Project({ projects }) {
     return (
         <div className={ProjectStyles.list}>
             {projects.map(project => (
-                <div className={ProjectStyles.preview} key={project.name} >
-                    <Link href={`/projects/${project.name}`} passHref>
-                        <a className={`${ProjectStyles.white} ${ProjectStyles.bold}`}>
+                <Link href={`/projects/${project.name}`} key={project.name} passHref>
+                    <a className={`${ProjectStyles.white} ${ProjectStyles.bold}`}>
+                        <div className={ProjectStyles.preview}  >
                             <h2>{project.name}</h2>
                             <p> {project.description}</p>
-                        </a>
-                    </Link>
-                </div>
+                        </div>
+                    </a>
+                </Link>
             ))}
         </div>
     )
