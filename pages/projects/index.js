@@ -13,7 +13,7 @@ function Project({ projects }) {
 							</a>
 						</Link>
 					</h2>
-					<p>{project.description}</p>
+					<p className={`${ProjectStyles.white}`}>{project.description}</p>
 				</div>
             ))}
         </div>
