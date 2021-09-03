@@ -34,7 +34,7 @@
   .this a:not(:first-child) {
     display: none;
   }
-  .a.H-icon {
+  a.Hicon {
     float: right;
     display: block;
   }
@@ -50,11 +50,11 @@
       position: relative;
   }
 
-  .this.responsive a.H-icon {
+  .this.responsive a.Hicon {
     display: none;
   }
 
-  .this.responsive a.C-icon {
+  .this.responsive a.Cicon {
     display: block;
     float: right;
     position: absolute;
