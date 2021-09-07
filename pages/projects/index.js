@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import CircleLogo from '../../components/CircleLogo';
+import ForkLogo from '../../components/ForkLogo';
 import ProjectStyles from '../../styles/Project.module.css'
 
 function Project({ projectJson, colorJson }) {
@@ -9,14 +10,14 @@ function Project({ projectJson, colorJson }) {
 				<div className={ProjectStyles.preview} key={project.name}>
 						<Link href={`/projects/${project.name}`} passHref>
 							<a className={`${ProjectStyles.white} ${ProjectStyles.bold}`}>
-								<h2>{project.name}</h2>
+								<h2>{`${project.full_name} `}{project.fork ? <ForkLogo />: ""}</h2>
 							</a>
 						</Link>
 					<p className={`${ProjectStyles.white}`} style={{ margin: "0px" }}>{project.description}</p>
                     <p className={`${ProjectStyles.white}`} style={{ marginTop: "5px" }}> 
                     {colorJson[project.language]?.color ? <CircleLogo color={colorJson[project.language].color} text={project.language}/>  : ""}
                     {project.license ? project.license.key.toUpperCase() : ""}</p>
-				</div> //color={colorJson[project.language].color} 
+				</div>
             ))}
         </div>
     )
