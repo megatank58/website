@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import CircleLogo from '../../components/CircleLogo';
-import ForkLogo from '../../components/ForkLogo';
+import CircleLogo from '../../images/CircleLogo';
+import ForkLogo from '../../images//ForkLogo';
 import ProjectStyles from '../../styles/Project.module.css'
 
 function Project({ projectJson, colorJson }) {

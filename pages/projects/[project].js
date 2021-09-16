@@ -4,7 +4,7 @@ import parse from 'remark-parse';
 import rehypePrism from "@mapbox/rehype-prism";
 import remark2rehype from "remark-rehype";
 import rehype2react from "rehype-react";
-import LinkLogo from "../../components/LinkLogo";
+import LinkLogo from "../../images/LinkLogo";
 import ProjectStyles from "../../styles/Project.module.css"
 
 const parser = unified()

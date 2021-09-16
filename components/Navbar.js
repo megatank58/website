@@ -1,6 +1,6 @@
-import LinkLogo from "./LinkLogo";
-import CloseLogo from "./CloseLogo";
-import HamburgerLogo from "./HamburgerLogo";
+import LinkLogo from "../images/LinkLogo";
+import CloseLogo from "../images/CloseLogo";
+import HamburgerLogo from "../images/HamburgerLogo";
 import NavbarStyles from "../styles/Navbar.module.css";
 import Link from "next/link";
 
