@@ -20,7 +20,7 @@ export default function Home() {
         <a className={`${ProjectStyles.white}`}>
           <h2 className={`${ProjectStyles.bold}`}>My Skills →</h2>
           <p>
-	     The languages that I'm currently learning and using in everyday projects...
+	     The languages that I am currently learning and using in everyday projects...
           </p>
         </a>
       </Link>
