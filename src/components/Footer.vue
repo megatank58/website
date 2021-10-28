@@ -2,11 +2,11 @@
 	<footer class="text-gray-800 dark:text-white dark:bg-dark-secondary">
 		<div class="max-w-3xl mx-auto text-center px-16 pt-10 pb-4 text-gray-200">
 			<strong
-				><router-link to="/" class="text-gray-800 dark:text-white dark:hover:bg-gray-800 ml-0.5 p-2"
+				><router-link to="/" class="text-gray-800 dark:text-white ml-0.5 p-2"
 					>Home</router-link
 				></strong
 			>
-			<p class="mb-4 text-gray-800 dark:text-white dark:hover:bg-gray-800 ml-0.5 p-2">
+			<p class="mb-4 text-gray-800 dark:text-white ml-0.5 p-2">
 				You have reached the end!
 			</p>
 			<p
@@ -14,7 +14,7 @@
 					text-xs
 					break-words-legacy
 					text-gray-800
-					dark:text-white dark:hover:bg-gray-800
+					dark:text-white
 					ml-0.5
 					p-2
 				"
