@@ -1,36 +1,23 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "lib": [
-      "ESNext",
-      "ESNext.AsyncIterable",
-      "DOM"
-    ],
-    "esModuleInterop": true,
-    "allowJs": true,
-    "sourceMap": true,
-    "strict": true,
-    "noEmit": true,
-    "experimentalDecorators": true,
     "baseUrl": ".",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "types": ["vite/client", "vite-plugin-pages/client"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "alwaysStrict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
+    "lib": ["ESNext", "DOM"],
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
-    },
-    "types": [
-      "@nuxt/types",
-      "@types/node"
-    ]
+			"~/*": ["src/*"]
+		},
   },
-  "exclude": [
-    "node_modules",
-    ".nuxt",
-    "dist"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

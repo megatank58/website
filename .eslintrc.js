@@ -1,16 +1,18 @@
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    node: true
-  },
-  extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'plugin:nuxt/recommended',
-    'prettier'
-  ],
-  plugins: [
-  ],
-  // add your custom rules here
-  rules: {}
-}
+	root: true,
+	parser: 'vue-eslint-parser',
+	// https://github.com/vuejs/vue-eslint-parser#parseroptionsparser
+	parserOptions: {
+		parser: '@typescript-eslint/parser',
+	},
+	plugins: ['@typescript-eslint'],
+	extends: [
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:vue/vue3-recommended',
+		'prettier',
+	],
+	rules: {
+		'no-undef': 'off'
+	}
+};
