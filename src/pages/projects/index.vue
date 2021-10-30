@@ -21,7 +21,6 @@
 			<p class="font-sans dark:text-white">{{ project.description }}</p>
 			<p class="font-sans dark:text-white"></p>
 		</div>
-		))}
 	</div>
 </template>
 
