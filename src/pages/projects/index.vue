@@ -24,23 +24,30 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
+import { Project } from '~/types/Project';
+
+const projects: Project[] = [];
+
 export default {
 	data() {
 		return {
-			projects: [],
+			projects,
 		};
 	},
 	methods: {
-		getProjects() {
+		getProjects(): void {
 			fetch('https://api.github.com/users/megatank58/repos')
 				.then((res) => res.json())
-				.then((json) => (this.projects = json));
+				.then((json: Project[]) => {
+					//@ts-ignore
+					this.projects = json;
+				});
 		},
 	},
-	created() {
+	created(): void {
+		//@ts-ignore
 		this.getProjects();
-        console.log(this.projects);
 	},
 };
 </script>

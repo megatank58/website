@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import { useDark, useToggle } from '@vueuse/core';
-
-const isDarkMode = useDark({
-	storageKey: 'theme',
-});
-
-const toggleDarkMode = useToggle(isDarkMode);
+import { isDarkMode, toggleDarkMode } from '~/util/DarkMode';
 </script>
 
 <template>
