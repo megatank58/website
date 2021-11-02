@@ -11,14 +11,12 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "highlight.js": "^11.3.1",
     "vue": "^3.2.16",
     "vue-router": "4"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.419",
-    "@types/marked": "^3.0.2",
-    "@types/node": "^16.11.6",
+    "@types/node": "^16.11.4",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "@vitejs/plugin-vue": "^1.9.3",
@@ -28,7 +26,6 @@
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^7.20.0",
-    "marked": "^3.0.8",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "tailwindcss": "^2.2.17",
