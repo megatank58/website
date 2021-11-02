@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import { useDark, useToggle } from '@vueuse/core';
-
-const isDarkMode = useDark({
-	storageKey: 'theme',
-});
-
-const toggleDarkMode = useToggle(isDarkMode);
+import { isDarkMode, toggleDarkMode } from '~/util/DarkMode';
 </script>
 
 <template>
@@ -20,6 +14,8 @@ const toggleDarkMode = useToggle(isDarkMode);
 			-m-0
 			mr-auto
 			border-b border-gray-400
+			dark:border-dark-primary
+			mt-3
 		"
 		id="navbar"
 	>
@@ -30,7 +26,7 @@ const toggleDarkMode = useToggle(isDarkMode);
 				text-gray-800
 				dark:text-white
 				hover:bg-gray-300
-				dark:hover:bg-gray-800
+				dark:hover:bg-dark-primary
 				ml-0.5
 				p-2
 				hover:text-blue-400
@@ -45,7 +41,7 @@ const toggleDarkMode = useToggle(isDarkMode);
 				text-gray-800
 				dark:text-white
 				hover:bg-gray-300
-				dark:hover:bg-gray-800
+				dark:hover:bg-dark-primary
 				ml-0.5
 				p-2
 				hover:text-blue-400
@@ -60,7 +56,7 @@ const toggleDarkMode = useToggle(isDarkMode);
 				text-gray-800
 				dark:text-white
 				hover:bg-gray-300
-				dark:hover:bg-gray-800
+				dark:hover:bg-dark-primary
 				ml-0.5
 				p-2
 				hover:text-blue-400
@@ -79,7 +75,7 @@ const toggleDarkMode = useToggle(isDarkMode);
 						items-center
 						justify-center
 						hover:bg-gray-300
-						dark:hover:bg-gray-800
+						dark:hover:bg-dark-primary
 						focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white focus:text-gray-800
 					"
 					:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"
@@ -106,7 +102,7 @@ const toggleDarkMode = useToggle(isDarkMode);
 					rounded-md
 					p-2
 					hover:bg-gray-300
-					dark:hover:bg-gray-800
+					dark:hover:bg-dark-primary
 					focus:outline-none focus:ring-1 focus:ring-inset focus:ring-white
 				"
 				:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"

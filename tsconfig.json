@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "types": ["vite/client", "vite-plugin-pages/client"],
+    "types": ["vite/client", "vite-plugin-pages/client", "node"],
     "module": "ESNext",
     "moduleResolution": "node",
     "strict": true,
