@@ -6,6 +6,3 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
-
-declare module 'remark-vue-renderer';
-declare module 'remark-render';
