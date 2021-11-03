@@ -11,6 +11,7 @@
 				border-b border-solid border-gray-400
 				dark:border-dark-primary
 				hover:shadow-md
+				rounded-lg
 			"
 		>
 			<div class="font-sans dark:text-white p-px">
@@ -22,7 +23,7 @@
 
 <script lang="ts">
 import { useRoute, useRouter } from 'vue-router';
-import hljs from 'highlight.js';
+import hljs from 'highlight.js/lib/common';
 import marked from 'marked';
 import { Project } from '~/types/Project';
 
@@ -81,6 +82,7 @@ export default {
 </script>
 
 <style>
+
 article a {
 	color: #35acf1;
 }
@@ -89,7 +91,19 @@ article h2 {
 	font-weight: bold;
 	font-family: system-ui;
 	margin-top: 0.125rem;
+	border-bottom: 1px solid #383838;
 }
+
+pre {
+	background-color: #f7f7f7;
+	border-radius: 4px;
+	padding: 10px;
+}
+
+.dark pre {
+	background-color: #192c4e;
+}
+
 .hljs {
 	display: block;
 	overflow-x: auto;

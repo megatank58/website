@@ -10,6 +10,7 @@
 			border-b border-solid border-gray-400
 			dark:border-dark-primary
 			hover:shadow-md
+			rounded-lg
 		"
 	>
 		<router-link to="/projects">
@@ -30,6 +31,7 @@
 			border-b border-solid border-gray-400
 			dark:border-dark-primary
 			hover:shadow-md
+			rounded-lg
 		"
 	>
 		<router-link to="/skills">
@@ -50,6 +52,7 @@
 			border-b border-solid border-gray-400
 			dark:border-dark-primary
 			hover:shadow-md
+			rounded-lg
 		"
 	>
 		<router-link to="/about">

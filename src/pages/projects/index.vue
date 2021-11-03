@@ -11,12 +11,13 @@
 				border-b border-solid border-gray-400
 				dark:border-dark-primary
 				hover:shadow-md
+				rounded-lg
 			"
 			v-for="(project, index) in projects"
 			:key="project.name + '_' + index"
 		>
 			<router-link :to="/projects/ + project.name" class="font-bold font-sans dark:text-white">
-				<h2>{{ project.full_name }}</h2>
+				<h2 class="text-base">{{ project.full_name }}</h2>
 			</router-link>
 			<p class="font-sans dark:text-white">{{ project.description }}</p>
 			<p class="font-sans dark:text-white"></p>
