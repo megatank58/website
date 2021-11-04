@@ -17,15 +17,15 @@
 			:key="project.name + '_' + index"
 		>
 			<router-link :to="/projects/ + project.name" class="font-bold font-sans dark:text-white">
-				<h2 class="text-base">
+				<h2 class="text-base"><span class="mr-2">
 					{{ project.full_name
-					}}<svg
+					}}</span><svg
 						v-if="project.fork"
 						xmlns="http://www.w3.org/2000/svg"
 						xmlns:xlink="http://www.w3.org/1999/xlink"
 						aria-hidden="true"
 						role="img"
-						class="iconify iconify--fa"
+						class="iconify iconify--fa inline-block"
 						width="21.34"
 						height="32"
 						preserveAspectRatio="xMidYMid meet"

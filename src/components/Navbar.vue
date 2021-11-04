@@ -48,8 +48,9 @@ const isOpen = ref(false);
 				p-2
 			"
 			href="https://github.com/Megatank58"
-			>GitHub</a
-		><heroicons-outline-external-link class="h-5 w-5" />
+			><span class="mr-2">GitHub</span
+			><heroicons-outline-external-link class="h-5 w-5 inline-block"
+		/></a>
 		<a
 			class="
 				font-bold font-sans
@@ -62,8 +63,9 @@ const isOpen = ref(false);
 				p-2
 			"
 			href="https://twitter.com/Megatank58"
-			>Twitter</a
-		><heroicons-outline-external-link class="h-5 w-5" />
+			><span class="mr-2">Twitter</span
+					><heroicons-outline-external-link class="h-5 w-5 inline-block"
+				/></a>
 		<div class="relative z-0 flex-1 px-2 flex lg:gap-2 items-center justify-center md:justify-end">
 			<button
 				class="
@@ -167,16 +169,24 @@ const isOpen = ref(false);
 		enter-to-class="translate-x-0 opacity-100"
 	>
 		<nav v-if="isOpen" id="mobile-menu" class="md:hidden" aria-label="Global navigation">
-			<div class="pt-2 pb-3 px-2 space-y-1 font-bold font-sans
-			text-gray-800
-			dark:text-white dark:bg-dark-secondary
-			p-1
-			-m-0
-			ml-auto
-			border-b border-gray-400
-			dark:border-dark-primary
-			mt-3
-			rounded-md">
+			<div
+				class="
+					pt-2
+					pb-3
+					px-2
+					space-y-1
+					font-bold font-sans
+					text-gray-800
+					dark:text-white dark:bg-dark-secondary
+					p-1
+					-m-0
+					ml-auto
+					border-b border-gray-400
+					dark:border-dark-primary
+					mt-3
+					rounded-md
+				"
+			>
 				<router-link
 					to="/"
 					class="
@@ -206,8 +216,9 @@ const isOpen = ref(false);
 						block
 					"
 					href="https://github.com/Megatank58"
-					><span class="mr-2">GitHub</span><heroicons-outline-external-link class="h-5 w-5 inline-block" /></a
-				>
+					><span class="mr-2">GitHub</span
+					><heroicons-outline-external-link class="h-5 w-5 inline-block"
+				/></a>
 
 				<a
 					class="
@@ -222,8 +233,9 @@ const isOpen = ref(false);
 						block
 					"
 					href="https://twitter.com/Megatank58"
-					><span class="mr-2">Twitter</span><heroicons-outline-external-link class="h-5 w-5 inline-block" /></a
-				>
+					><span class="mr-2">Twitter</span
+					><heroicons-outline-external-link class="h-5 w-5 inline-block"
+				/></a>
 			</div>
 		</nav>
 	</transition>

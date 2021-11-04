@@ -42,6 +42,9 @@
     img {
         display: inherit;
     }
+	svg {
+		display: inherit;
+	}
 }
 
 @tailwind components;
