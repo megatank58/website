@@ -98,6 +98,7 @@ pre {
 	background-color: #f7f7f7;
 	border-radius: 4px;
 	padding: 10px;
+	overflow-x: auto;
 }
 
 .dark pre {
