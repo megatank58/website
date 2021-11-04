@@ -26,7 +26,6 @@ import { useRoute, useRouter } from 'vue-router';
 import hljs from 'highlight.js/lib/common';
 import marked from 'marked';
 import { Project } from '~/types/Project';
-
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	highlight: function (code, lang) {
@@ -34,7 +33,6 @@ marked.setOptions({
 		return hljs.highlight(code, { language }).value;
 	},
 });
-
 export default {
 	setup() {
 		return {
@@ -82,29 +80,24 @@ export default {
 </script>
 
 <style>
-
 article a {
 	color: #35acf1;
 }
-
 article h2 {
 	font-weight: bold;
 	font-family: system-ui;
 	margin-top: 0.125rem;
 	border-bottom: 1px solid #383838;
 }
-
 pre {
 	background-color: #f7f7f7;
 	border-radius: 4px;
 	padding: 10px;
 	overflow-x: auto;
 }
-
 .dark pre {
 	background-color: #192c4e;
 }
-
 .hljs {
 	display: block;
 	overflow-x: auto;
@@ -113,20 +106,17 @@ pre {
 	color: #b9bbbe;
 	text-size-adjust: none;
 }
-
 .hljs-comment,
 .hljs-quote {
 	/* Because Discords accessibility team can't do contrasts */
 	/* color: #4f545c; */
 	color: hsl(217, 8%, 55%);
 }
-
 .hljs-addition,
 .hljs-keyword,
 .hljs-selector-tag {
 	color: #859900;
 }
-
 .hljs-doctag,
 .hljs-literal,
 .hljs-meta .hljs-meta-string,
@@ -135,7 +125,6 @@ pre {
 .hljs-string {
 	color: #2aa198;
 }
-
 .hljs-name,
 .hljs-section,
 .hljs-selector-class,
@@ -143,7 +132,6 @@ pre {
 .hljs-title {
 	color: #268bd2;
 }
-
 .hljs-attr,
 .hljs-attribute,
 .hljs-class .hljs-title,
@@ -152,7 +140,6 @@ pre {
 .hljs-variable {
 	color: #b58900;
 }
-
 .hljs-bullet,
 .hljs-link,
 .hljs-meta,
@@ -163,20 +150,16 @@ pre {
 .hljs-symbol {
 	color: #cb4b16;
 }
-
 .hljs-built_in,
 .hljs-deletion {
 	color: #dc322f;
 }
-
 .hljs-formula {
 	background: #073642;
 }
-
 .hljs-emphasis {
 	font-style: italic;
 }
-
 .hljs-strong {
 	font-weight: 700;
 }

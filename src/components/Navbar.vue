@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { isDarkMode, toggleDarkMode } from '~/util/DarkMode';
 import { ref } from 'vue';
-
 const isOpen = ref(false);
 </script>
 
@@ -30,7 +29,7 @@ const isOpen = ref(false);
 				text-gray-800
 				dark:text-white
 				hover:bg-gray-300
-				dark:hover:bg-gray-800
+				dark:hover:bg-dark-primary
 				ml-0.5
 				p-2
 			"
@@ -44,7 +43,7 @@ const isOpen = ref(false);
 				text-gray-800
 				dark:text-white
 				hover:bg-gray-300
-				dark:hover:bg-gray-800
+				dark:hover:bg-dark-primary
 				ml-0.5
 				p-2
 			"
@@ -58,7 +57,7 @@ const isOpen = ref(false);
 				text-gray-800
 				dark:text-white
 				hover:bg-gray-300
-				dark:hover:bg-gray-800
+				dark:hover:bg-dark-primary
 				ml-0.5
 				p-2
 			"
@@ -73,7 +72,7 @@ const isOpen = ref(false);
 					rounded-md
 					p-2
 					hover:bg-gray-300
-					dark:hover:bg-gray-800
+					dark:hover:bg-dark-primary
 					focus:outline-none focus:ring-1 focus:ring-inset focus:ring-white
 				"
 				:aria-label="`Switch to ${isDarkMode ? 'light theme' : 'dark theme'}`"

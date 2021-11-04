@@ -19,7 +19,8 @@
 			<router-link :to="/projects/ + project.name" class="font-bold font-sans dark:text-white">
 				<h2 class="text-base">
 					{{ project.full_name
-					}}<svg v-if="project.fork"
+					}}<svg
+						v-if="project.fork"
 						xmlns="http://www.w3.org/2000/svg"
 						xmlns:xlink="http://www.w3.org/1999/xlink"
 						aria-hidden="true"
@@ -45,9 +46,7 @@
 
 <script lang="ts">
 import { Project } from '~/types/Project';
-
 const projects: Project[] = [];
-
 export default {
 	data() {
 		return {
