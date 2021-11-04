@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "noEmit": true,
     "target": "ESNext",
     "useDefineForClassFields": true,
     "types": ["vite/client", "vite-plugin-pages/client"],
