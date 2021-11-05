@@ -15,7 +15,7 @@
 			"
 		>
 			<div class="font-sans dark:text-white p-px">
-				<div v-html="readme"></div>
+				<div v-html="blog"></div>
 			</div>
 		</article>
 	</div>
@@ -25,7 +25,7 @@
 import { useRoute, useRouter } from 'vue-router';
 import hljs from 'highlight.js/lib/common';
 import marked from 'marked';
-import { Project } from '~/types/Project';
+import { Blog } from '~/types/Blog';
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	highlight: function (code, lang) {
@@ -41,40 +41,22 @@ export default {
 	},
 	data() {
 		return {
-			project: {} as Project,
-			readme: '',
+			blog: '',
 		};
 	},
 	methods: {
-		getProject(): void {
-			fetch(
-				'https://api.github.com/repos/Megatank58/' +
-					useRouter().currentRoute.value.fullPath.replace('/projects/', ''),
-			)
-				.then((res) => res.json())
-				.then((json: Project) => {
+		getBlog() {
+			fetch('https://raw.githubusercontent.com/Megatank58/website/main/blogs/' + useRouter().currentRoute.value.fullPath.replace('blogs/', ''))
+			.then((res) => res.text())
+			.then((text) => {
 					//@ts-ignore
-					this.project = json;
-				});
-		},
-		getReadme() {
-			fetch(
-				'https://raw.githubusercontent.com/Megatank58/' +
-					useRouter().currentRoute.value.fullPath.replace('/projects/', '') +
-					'/main/README.md',
-			)
-				.then((res) => res.text())
-				.then((text) => {
-					//@ts-ignore
-					this.readme = marked(text);
+					this.blog = marked(text);
 				});
 		},
 	},
 	created(): void {
 		// @ts-ignore
-		this.getProject();
-		// @ts-ignore
-		this.getReadme();
+		this.getBlog();
 	},
 };
 </script>

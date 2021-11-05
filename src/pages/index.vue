@@ -58,11 +58,11 @@
 			rounded-lg
 		"
 	>
-		<router-link to="/skills">
+		<router-link to="/blogs">
 			<a>
-				<h2 class="text-xl font-bold font-sans mb-2 dark:text-white">My Skills →</h2>
+				<h2 class="text-xl font-bold font-sans mb-2 dark:text-white">My Blogs →</h2>
 				<p class="dark:text-white">
-					The languages that I am currently learning and using in everyday projects...
+					I write blogs every week! Check them out here
 				</p>
 			</a>
 		</router-link>
