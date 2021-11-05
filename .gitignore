@@ -9,7 +9,7 @@ dist/
 .env.*.local
 
 # Log files
-*log*
+*.log.*
 
 # Runtime data
 *pid*
