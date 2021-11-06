@@ -29,11 +29,12 @@
 
 <script lang="ts">
 import { Blog } from '~/types/Blog';
-const blogs: string[] = [];
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
 	data() {
 		return {
-			blogs,
+			blogs: new Array<string>(),
 		};
 	},
 	methods: {
@@ -44,16 +45,16 @@ export default {
 					const blogs = json.tree.filter(
 						(blog) => blog.path.startsWith('blogs') && blog.path !== 'blogs',
 					);
+					const _blogs = [];
 					for (const blog of blogs) {
-						//@ts-ignore
-						this.blogs.push(blog.path.split('/')[1]);
+						_blogs.push(blog.path.split('/')[1]);
 					}
+					this.blogs = _blogs;
 				});
 		},
 	},
 	created(): void {
-		//@ts-ignore
 		this.getBlogs();
 	},
-};
+});
 </script>

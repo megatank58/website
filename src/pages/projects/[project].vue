@@ -26,6 +26,8 @@ import { useRoute, useRouter } from 'vue-router';
 import hljs from 'highlight.js/lib/common';
 import marked from 'marked';
 import { Project } from '~/types/Project';
+import { defineComponent } from 'vue-demi';
+
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	highlight: function (code, lang) {
@@ -33,7 +35,8 @@ marked.setOptions({
 		return hljs.highlight(code, { language }).value;
 	},
 });
-export default {
+
+export default defineComponent({
 	setup() {
 		return {
 			route: useRoute().fullPath,
@@ -53,7 +56,6 @@ export default {
 			)
 				.then((res) => res.json())
 				.then((json: Project) => {
-					//@ts-ignore
 					this.project = json;
 				});
 		},
@@ -65,18 +67,15 @@ export default {
 			)
 				.then((res) => res.text())
 				.then((text) => {
-					//@ts-ignore
 					this.readme = marked(text);
 				});
 		},
 	},
-	created(): void {
-		// @ts-ignore
+	created() {
 		this.getProject();
-		// @ts-ignore
 		this.getReadme();
 	},
-};
+});
 </script>
 
 <style>

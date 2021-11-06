@@ -25,7 +25,8 @@
 import { useRoute, useRouter } from 'vue-router';
 import hljs from 'highlight.js/lib/common';
 import marked from 'marked';
-import { Blog } from '~/types/Blog';
+import { defineComponent } from 'vue-demi';
+
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	highlight: function (code, lang) {
@@ -33,7 +34,8 @@ marked.setOptions({
 		return hljs.highlight(code, { language }).value;
 	},
 });
-export default {
+
+export default defineComponent({
 	setup() {
 		return {
 			route: useRoute().fullPath,
@@ -49,16 +51,14 @@ export default {
 			fetch('https://raw.githubusercontent.com/Megatank58/website/main/blogs/' + useRouter().currentRoute.value.fullPath.replace('blogs/', ''))
 			.then((res) => res.text())
 			.then((text) => {
-					//@ts-ignore
 					this.blog = marked(text);
 				});
 		},
 	},
-	created(): void {
-		// @ts-ignore
+	created() {
 		this.getBlog();
 	},
-};
+});
 </script>
 
 <style>

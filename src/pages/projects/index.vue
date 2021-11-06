@@ -47,12 +47,13 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue-demi';
 import { Project } from '~/types/Project';
-const projects: Project[] = [];
-export default {
+
+export default defineComponent({
 	data() {
 		return {
-			projects,
+			projects: new Array<Project>(),
 		};
 	},
 	methods: {
@@ -66,14 +67,12 @@ export default {
 					const filtered = sorted.filter((project) => {
 						return project.description && project.full_name !== 'Megatank58/Megatank58';
 					});
-					//@ts-ignore
 					this.projects = filtered;
 				});
 		},
 	},
-	created(): void {
-		//@ts-ignore
+	created() {
 		this.getProjects();
 	},
-};
+});
 </script>

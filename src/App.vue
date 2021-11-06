@@ -1,4 +1,5 @@
 <template>
-  <Navbar />
-  <router-view />
+	<Navbar />
+	<router-view />
+	<SWBanner />
 </template>
