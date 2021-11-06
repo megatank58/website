@@ -8,6 +8,6 @@ The blogs use a lot of code from the `/projects/:project` endpoint, such as *ita
 console.log("Hello world!");
 ```
 
-I will be posting blogs every week *hopefully* but here is a [cool link]()
+I will be posting blogs every week *hopefully* but here is a [cool link](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-> - Megatank58
+> Megatank58
