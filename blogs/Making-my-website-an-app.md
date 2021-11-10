@@ -30,20 +30,20 @@ $ sudo apt update && sudo apt install libwebkit2gtk-4.0-dev \
 Other tools like rust, cargo, node.js and yarn are preinstalled on GitPod.
 
 So now I can install the Tauri cli like any other dependency using yarn:
-```sh
-yarn add -D @tauri-apps/cli
+```bash
+$ yarn add -D @tauri-apps/cli
 ```
 and the api as I am using vite and webpack
-```sh
-yarn add @tauri-apps/api
+```bash
+$ yarn add @tauri-apps/api
 ```
 Then I can easily run
-```sh
-yarn tauri init
+```bash
+$ yarn tauri init
 ```
 And it generates a lot of files for me in the root, all of which work out of the box:
 ```
-└── src-tauri
+── src-tauri
     ├── .gitignore
     ├── Cargo.toml
     ├── rustfmt.toml
@@ -81,7 +81,7 @@ Luckliy for me, Tauri has an offical [action](https://github.com/tauri-apps/taur
 
 So I just ~~copied~~ wrote it in `.github/workflows` folder and made it to use the stable branch and it worked as expected, it does takes ~10mins to build probably because it downloads a lot of rust dependencies but it works well.
 
-```yml
+```yaml
 name: "publish"
 on:
   push:
