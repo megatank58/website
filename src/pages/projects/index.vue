@@ -1,6 +1,8 @@
 <template>
 	<div class="flex items-stretch flex-col m-auto">
 		<div
+			v-for="(project, index) in projects"
+			:key="project.name + '_' + index"
 			class="
 				dark:bg-dark-secondary
 				py-2.5
@@ -13,8 +15,6 @@
 				hover:shadow-md
 				rounded-lg
 			"
-			v-for="(project, index) in projects"
-			:key="project.name + '_' + index"
 		>
 			<router-link :to="/projects/ + project.name" class="font-bold font-sans dark:text-white">
 				<h2 class="text-base">
@@ -41,7 +41,16 @@
 				</h2>
 			</router-link>
 			<p class="font-sans dark:text-white">{{ project.description }}</p>
-			<p class="font-sans dark:text-white"></p>
+			<p class="font-sans dark:text-white">
+				Created at
+				{{
+					new Date(project.created_at).getDate() +
+					'/' +
+					(new Date(project.created_at).getMonth() + 1) +
+					'/' +
+					new Date(project.created_at).getFullYear()
+				}}
+			</p>
 		</div>
 	</div>
 </template>
@@ -56,23 +65,21 @@ export default defineComponent({
 			projects: new Array<Project>(),
 		};
 	},
-	methods: {
-		getProjects(): void {
-			fetch('https://api.github.com/users/megatank58/repos')
-				.then((res) => res.json())
-				.then((json: Project[]) => {
-					const sorted = json.sort((x, y) => {
-						return Number(x.fork) - Number(y.fork);
-					});
-					const filtered = sorted.filter((project) => {
-						return project.description && project.full_name !== 'Megatank58/Megatank58';
-					});
-					this.projects = filtered;
-				});
-		},
+	async created() {
+		await this.getProjects();
 	},
-	created() {
-		this.getProjects();
+	methods: {
+		async getProjects() {
+			const json: Project[] = await (await fetch('https://api.github.com/users/megatank58/repos')).json();
+
+			const sorted = json.sort((x, y) => {
+				return Number(x.fork) - Number(y.fork);
+			});
+			const filtered = sorted.filter((project) => {
+				return project.description && project.full_name !== 'Megatank58/Megatank58';
+			});
+			this.projects = filtered;
+		},
 	},
 });
 </script>

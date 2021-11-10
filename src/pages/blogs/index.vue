@@ -1,6 +1,8 @@
 <template>
 	<div class="flex items-stretch flex-col m-auto">
 		<div
+			v-for="(blog, index) in blogs"
+			:key="blog + '_' + index"
 			class="
 				dark:bg-dark-secondary
 				py-2.5
@@ -13,14 +15,22 @@
 				hover:shadow-md
 				rounded-lg
 			"
-			v-for="(blog, index) in blogs"
-			:key="blog + '_' + index"
 		>
-			<router-link :to="/blogs/ + blog" class="font-bold font-sans dark:text-white">
+			<router-link :to="/blogs/ + blog.name" class="font-bold font-sans dark:text-white">
 				<h2 class="text-base">
 					<span class="mr-2">
-						{{ blog }}
+						{{ blog.displayName }}
 					</span>
+					<p class="font-sans dark:text-white">
+						Created at
+						{{
+							new Date(blog.createdAt).getDate() +
+							'/' +
+							(new Date(blog.createdAt).getMonth() + 1) +
+							'/' +
+							new Date(blog.createdAt).getFullYear()
+						}}
+					</p>
 				</h2>
 			</router-link>
 		</div>
@@ -28,33 +38,44 @@
 </template>
 
 <script lang="ts">
-import { Blog } from '~/types/Blog';
 import { defineComponent } from 'vue';
+import { Blog } from '~/types/Blog';
 
 export default defineComponent({
 	data() {
 		return {
-			blogs: new Array<string>(),
+			blogs: new Array<{ name: string; createdAt: string }>(),
 		};
 	},
-	methods: {
-		getBlogs(): void {
-			fetch('https://api.github.com/repos/megatank58/website/git/trees/main?recursive=1')
-				.then((res) => res.json())
-				.then((json: Blog) => {
-					const blogs = json.tree.filter(
-						(blog) => blog.path.startsWith('blogs') && blog.path !== 'blogs',
-					);
-					const _blogs = [];
-					for (const blog of blogs) {
-						_blogs.push(blog.path.split('/')[1]);
-					}
-					this.blogs = _blogs;
-				});
-		},
+	async created() {
+		await this.getBlogs();
 	},
-	created(): void {
-		this.getBlogs();
+	methods: {
+		async getBlogs() {
+			const json: Blog = await (
+				await fetch('https://api.github.com/repos/megatank58/website/git/trees/main?recursive=1')
+			).json();
+			const blogs = json.tree.filter(
+				(blog) => blog.path.startsWith('blogs') && blog.path !== 'blogs',
+			);
+			const _blogs = new Array<{ name: string; displayName: string; createdAt: string }>();
+			for (const blog of blogs) {
+				_blogs.push({
+					name: blog.path.split('/')[1].replace('.md', ''),
+					displayName: blog.path.split('/')[1].replace('.md', '').replaceAll('-', ' '),
+					createdAt: (
+						await (
+							await fetch(
+								'https://api.github.com/repos/megatank58/website/commits?path=blogs%2F' +
+									blog.path.split('/')[1] +
+									'&page=1&per_page=1',
+							)
+						).json()
+					)[0].commit.committer.date,
+				});
+			}
+			this.blogs = _blogs.reverse();
+		},
 	},
 });
 </script>
