@@ -1,10 +1,10 @@
 [package]
 name = "app"
-version = "1.0.0"
+version = "2.0.0"
 description = "Desktop application for megatank58.me website"
-authors = ["you"]
-license = ""
-repository = ""
+authors = ["Megatank58"]
+license = "MIT"
+repository = "https://github.com/megatank58/website"
 default-run = "app"
 edition = "2018"
 build = "src/build.rs"
