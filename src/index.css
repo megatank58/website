@@ -1,66 +1,200 @@
 @tailwind base;
 
 @layer base {
+
+	/* CSS: Tailwind preflight css */
+
+	ul,
+	h1,
+	h2,
+	h3,
+	p {
+		margin-inline-start: 0px;
+		margin-inline-end: 0px;
+	}
+	ul,
+	h3,
+	p {
+		margin-block-start: 1rem;
+		margin-block-end: 1rem;
+	}
 	ul {
 		list-style-position: inside;
 		list-style-type: disc;
-		margin-block-start: 1rem;
-		margin-block-end: 1rem;
-		margin-inline-start: 0px;
-		margin-inline-end: 0px;
 		padding-left: 2rem;
 	}
 	h1 {
 		font-size: 2rem;
 		margin-block-start: 0.67rem;
 		margin-block-end: 0.67rem;
-		margin-inline-start: 0px;
-		margin-inline-end: 0px;
 	}
 	h2 {
 		font-size: 1.5rem;
 		margin-block-start: 0.83rem;
 		margin-block-end: 0.83rem;
-		margin-inline-start: 0px;
-		margin-inline-end: 0px;
 	}
 	h3 {
 		font-size: 1.17rem;
-		margin-block-start: 1rem;
-		margin-block-end: 1rem;
-		margin-inline-start: 0px;
-		margin-inline-end: 0px;
 		font-weight: 600;
 	}
 	p {
 		display: block;
-		margin-block-start: 1rem;
-		margin-block-end: 1rem;
-		margin-inline-start: 0px;
-		margin-inline-end: 0px;
 	}
-	img {
-		display: inherit;
-	}
+	img,
 	svg {
 		display: inherit;
 	}
 
+	/* CSS: Anchor link */
+
+	.anchor {
+		opacity: 0;
+		font-size: inherit;
+	}
+	h1:hover .anchor,
+	h2:hover .anchor,
+	h3:hover .anchor,
+	h4:hover .anchor,
+	h5:hover .anchor,
+	h6:hover .anchor {
+		opacity: 1;
+	}
+
+	/* CSS: Markdown */
+
+	article a {
+		color: #35acf1;
+	}
+	article h1 {
+		font-weight: bold;
+		font-family: system-ui;
+		margin-top: 0.125rem;
+		border-bottom: 1px solid #383838;
+	}
+	article h2 {
+		font-weight: bold;
+		font-family: system-ui;
+		margin-top: 0.125rem;
+		border-bottom: 1px solid #383838;
+	}
+	pre {
+		background-color: #f7f7f7;
+		border-radius: 4px;
+		padding: 10px;
+		overflow-x: auto;
+	}
+	.dark pre {
+		background-color: #192c4e;
+	}
+	blockquote {
+		padding: 0 1rem;
+		border-left: 0.25rem solid black;
+	}
+	blockquote p {
+		margin: 0px;
+	}
+	.dark blockquote {
+		border-left: 0.25rem solid white;
+	}
+	table {
+		border-collapse: collapse;
+	}
+	tr {
+		border: solid 1px black;
+	}
+	.dark tr {
+		border: solid 1px white;
+	}
+	td {
+		border: solid 1px black;
+	}
+	.dark td {
+		border: solid 1px white;
+	}
+	th {
+		border: solid 1px black;
+	}
+	.dark th {
+		border: solid 1px white;
+	}
+
+	/* CSS: Hightlight.js */
+
+	.hljs {
+		display: block;
+		overflow-x: auto;
+		padding: 0.5em;
+		border-radius: 4px;
+		color: #b9bbbe;
+		text-size-adjust: none;
+	}
+	.hljs-comment,
+	.hljs-quote {
+		color: hsl(217, 8%, 55%);
+	}
+	.hljs-addition,
+	.hljs-keyword,
+	.hljs-selector-tag {
+		color: #859900;
+	}
+	.hljs-doctag,
+	.hljs-literal,
+	.hljs-meta .hljs-meta-string,
+	.hljs-number,
+	.hljs-regexp,
+	.hljs-string {
+		color: #2aa198;
+	}
+	.hljs-name,
+	.hljs-section,
+	.hljs-selector-class,
+	.hljs-selector-id,
+	.hljs-title {
+		color: #268bd2;
+	}
+	.hljs-attr,
+	.hljs-attribute,
+	.hljs-class .hljs-title,
+	.hljs-template-variable,
+	.hljs-type,
+	.hljs-variable {
+		color: #b58900;
+	}
+	.hljs-bullet,
+	.hljs-link,
+	.hljs-meta,
+	.hljs-meta .hljs-keyword,
+	.hljs-selector-attr,
+	.hljs-selector-pseudo,
+	.hljs-subst,
+	.hljs-symbol {
+		color: #cb4b16;
+	}
+	.hljs-built_in,
+	.hljs-deletion {
+		color: #dc322f;
+	}
+	.hljs-formula {
+		background: #073642;
+	}
+	.hljs-emphasis {
+		font-style: italic;
+	}
+	.hljs-strong {
+		font-weight: 700;
+	}
+
+	/* CSS: CUSTOM SCROLLBAR */
+
 	::-webkit-scrollbar {
 		width: 10px;
 	}
-
-	/* Track */
 	::-webkit-scrollbar-track {
 		background: #191919;
 	}
-
-	/* Handle */
 	::-webkit-scrollbar-thumb {
 		background: #252525;
 	}
-
-	/* Handle on hover */
 	::-webkit-scrollbar-thumb:hover {
 		background: #303030;
 	}
