@@ -44,7 +44,7 @@ import { Blog } from '~/types/Blog';
 export default defineComponent({
 	data() {
 		return {
-			blogs: new Array<{ name: string; createdAt: string }>(),
+			blogs: new Array<{ name: string; displayName: string; createdAt: string }>(),
 		};
 	},
 	async created() {
