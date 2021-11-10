@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isDarkMode, toggleDarkMode } from '~/util/DarkMode';
+import { isDarkMode, toggleDarkMode } from '~/util';
 import { ref } from 'vue';
 const isOpen = ref(false);
 </script>
