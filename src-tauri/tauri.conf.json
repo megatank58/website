@@ -6,7 +6,7 @@
   "build": {
     "distDir": "../dist",
     "devPath": "http://localhost:3000",
-    "beforeDevCommand": "",
+    "beforeDevCommand": "yarn build",
     "beforeBuildCommand": ""
   },
   "tauri": {
@@ -46,7 +46,10 @@
       }
     },
     "updater": {
-      "active": false
+      "active": true,
+      "endpoints": [
+        "https://api.github.com/repos/megatank58/website/releases/{{target}}/{{current_version}}"
+      ]
     },
     "allowlist": {
       "all": false
