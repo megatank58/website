@@ -40,9 +40,9 @@
 					></span>
 				</h2>
 			</router-link>
-			<p class="font-sans dark:text-white">{{ project.description }}</p>
-			<p class="font-sans dark:text-white">
-				Created at
+			<div class="font-sans dark:text-white">
+				<div class="float-left">{{ project.description }}</div>
+				<div class="float-right">
 				{{
 					new Date(project.created_at).getDate() +
 					'/' +
@@ -50,7 +50,8 @@
 					'/' +
 					new Date(project.created_at).getFullYear()
 				}}
-			</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -76,7 +77,7 @@ export default defineComponent({
 				return Number(x.fork) - Number(y.fork);
 			});
 			const filtered = sorted.filter((project) => {
-				return project.description && project.full_name !== 'Megatank58/Megatank58';
+				return project.description && project.full_name.toLowerCase() !== 'megatank58/megatank58';
 			});
 			this.projects = filtered;
 		},

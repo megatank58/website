@@ -1,5 +1,12 @@
+export interface Blogs {
+	tree: {
+		path: string;
+	}[];
+}
+
 export interface Blog {
-   tree: {
-       path: string
-   }[]
+	name: string;
+	displayName: string;
+    content: string;
+	createdAt: string;
 }

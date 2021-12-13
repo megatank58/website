@@ -16,22 +16,18 @@
 				rounded-lg
 			"
 		>
-			<router-link :to="/blogs/ + blog.name" class="font-bold font-sans dark:text-white">
-				<h2 class="text-base">
-					<span class="mr-2">
-						{{ blog.displayName }}
-					</span>
-					<p class="font-sans dark:text-white">
-						Created at
-						{{
-							new Date(blog.createdAt).getDate() +
-							'/' +
-							(new Date(blog.createdAt).getMonth() + 1) +
-							'/' +
-							new Date(blog.createdAt).getFullYear()
-						}}
-					</p>
-				</h2>
+			<router-link :to="/blogs/ + blog.name" class="font-sans dark:text-white">
+				<div v-html="blog.content" class="mr-2">
+				</div>
+				<p class="font-sans dark:text-white">
+					{{
+						new Date(blog.createdAt).getDate() +
+						'/' +
+						(new Date(blog.createdAt).getMonth() + 1) +
+						'/' +
+						new Date(blog.createdAt).getFullYear()
+					}}
+				</p>
 			</router-link>
 		</div>
 	</div>
@@ -39,12 +35,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Blog } from '~/types/Blog';
+import { parseMarkdown, trim } from '../../util';
+import { Blog, Blogs } from '~/types/Blog';
 
 export default defineComponent({
 	data() {
 		return {
-			blogs: new Array<{ name: string; displayName: string; createdAt: string }>(),
+			blogs: new Array<Blog>(),
 		};
 	},
 	async created() {
@@ -52,17 +49,25 @@ export default defineComponent({
 	},
 	methods: {
 		async getBlogs() {
-			const json: Blog = await (
+			const json: Blogs = await (
 				await fetch('https://api.github.com/repos/megatank58/website/git/trees/main?recursive=1')
 			).json();
 			const blogs = json.tree.filter(
 				(blog) => blog.path.startsWith('blogs') && blog.path !== 'blogs',
 			);
-			const _blogs = new Array<{ name: string; displayName: string; createdAt: string }>();
+			const _blogs = new Array<Blog>();
 			for (const blog of blogs) {
 				_blogs.push({
 					name: blog.path.split('/')[1].replace('.md', ''),
 					displayName: blog.path.split('/')[1].replace('.md', '').replaceAll('-', ' '),
+					content: parseMarkdown(trim(
+						await (
+							await fetch(
+								'https://raw.githubusercontent.com/Megatank58/website/main/blogs/' + blog.path.split('/')[1],
+							)
+						).text(),
+						172,
+					)),
 					createdAt: (
 						await (
 							await fetch(

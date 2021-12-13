@@ -1,3 +1,29 @@
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { parseMarkdown } from '../util';
+
+export default defineComponent({
+	data() {
+		return {
+			content: '',
+		};
+	},
+	async created() {
+		await this.parseContent();
+	},
+	methods: {
+		async parseContent() {
+			this.content = parseMarkdown(
+				`Hey there! I am **megatank58** JS/TS developer from India, 
+				working on random projects, playing games or *perhaps* writing notes, 
+				After programming for two years I have got a lot of experience ~~and stackoverflow searches~~. 
+				At the moment I'm learning frontend, this website being a portfolio of it. I hope you enjoy!`
+			);
+		},
+	},
+});
+</script>
+
 <template>
 	<div
 		class="
@@ -16,9 +42,9 @@
 	>
 		<div>
 			<img src="/src/assets/logo.png" class="float-left pb-2" />
-			<p class="font-bold text-xl text-center pt-40 mt-0">
-				Hello there! I am Megatank58 <span class="font-normal m-0">JS/TS developer from India, working on random projects, playing games or <span class="italic">maybe</span> writing notes</span>
-			</p>
+			<div class="text-center pt-40 mt-0">
+				<div class="text-xl" v-html="content"></div>
+			</div>
 		</div>
 	</div>
 	<div
@@ -61,9 +87,7 @@
 		<router-link to="/blogs">
 			<a>
 				<h2 class="text-xl font-bold font-sans mb-2 dark:text-white">My Blogs →</h2>
-				<p class="dark:text-white">
-					I write blogs every week! Check them out here
-				</p>
+				<p class="dark:text-white">I write blogs every week! Check them out here</p>
 			</a>
 		</router-link>
 	</div>
