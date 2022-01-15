@@ -34,7 +34,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^7.20.0",
     "husky": "^7.0.4",
-    "marked": "^3.0.8",
+    "marked": "^4.0.10",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "tailwindcss": "^2.2.17",
