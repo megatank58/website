@@ -1,5 +1,6 @@
-import hljs from 'highlight.js/lib/common';
-import marked from 'marked';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/atom-one-dark.css'
+import { marked } from 'marked';
 
 export function parseMarkdown(text: string) {
 	marked.setOptions({
