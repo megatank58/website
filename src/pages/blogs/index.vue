@@ -1,25 +1,36 @@
 <template>
-	<div class="flex items-stretch flex-col m-auto">
+	<div class="flex items-stretch flex-col m-auto px-4">
 		<div
 			v-for="(blog, index) in blogs"
 			:key="blog + '_' + index"
 			class="
-				dark:bg-dark-secondary
+				prose
+				prose-pre:text-neutral-content prose-pre:p-3 prose-pre:rounded prose-pre:overflow-x-auto
+				max-w-none
+				prose-a:text-primary prose-a:no-underline
+				prose-img:inline prose-img:m-1
+				prose-p:m-1
+				prose-h1:border-border prose-h1:border-b prose-h1:mt-1 prose-h1:text-bold
+				prose-h2:border-b
+				prose-h2:mt-1
+				prose-h2:text-bold
+				prose-h2:border-solid
+				prose-h2:border-border
+				flex
+				items-stretch
+				flex-col
+				m-auto
 				py-2.5
-				pb-2.5
-				pr-4
-				pl-4
+				px-4
 				mt-3.5
-				border-b border-solid border-gray-400
-				dark:border-dark-primary
-				hover:shadow-md
+				shadow-lg
+				hover:shadow-xl
 				rounded-lg
 			"
 		>
-			<router-link :to="/blogs/ + blog.name" class="font-sans dark:text-white">
-				<div v-html="blog.content" class="mr-2">
-				</div>
-				<p class="font-sans dark:text-white">
+			<router-link :to="/blogs/ + blog.name" class="font-sans text-base-content">
+				<div v-html="blog.content" class="mr-2"></div>
+				<p class="font-sans text-base-content">
 					{{
 						new Date(blog.createdAt).getDate() +
 						'/' +
@@ -60,14 +71,17 @@ export default defineComponent({
 				_blogs.push({
 					name: blog.path.split('/')[1].replace('.md', ''),
 					displayName: blog.path.split('/')[1].replace('.md', '').replaceAll('-', ' '),
-					content: parseMarkdown(trim(
-						await (
-							await fetch(
-								'https://raw.githubusercontent.com/Megatank58/website/main/blogs/' + blog.path.split('/')[1],
-							)
-						).text(),
-						172,
-					)),
+					content: parseMarkdown(
+						trim(
+							await (
+								await fetch(
+									'https://raw.githubusercontent.com/Megatank58/website/main/blogs/' +
+										blog.path.split('/')[1],
+								)
+							).text(),
+							256,
+						),
+					),
 					createdAt: (
 						await (
 							await fetch(

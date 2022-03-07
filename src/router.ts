@@ -7,7 +7,7 @@ const router = createRouter({
 	routes,
 });
 
-router.beforeResolve((to, from, next) => {
+router.beforeResolve((to, _, next) => {
 	// If this isn't an initial page load.
 	if (to.name) {
 		// Start the route progress bar.
@@ -16,7 +16,7 @@ router.beforeResolve((to, from, next) => {
 	next();
 });
 
-router.afterEach((to, from) => {
+router.afterEach(() => {
 	// Complete the animation of the route progress bar.
 	NProgress.done();
 });

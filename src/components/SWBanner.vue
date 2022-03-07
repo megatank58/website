@@ -1,10 +1,10 @@
 <template>
 	<div v-if="offlineReady || needRefresh" class="fixed bottom-0 inset-x-0 pb-2 sm:pb-5 z-20">
 		<div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-			<div class="p-2 rounded-lg bg-gray-100 dark:bg-dark-secondary shadow-lg sm:p-3">
+			<div class="p-2 rounded-lg bg-gray-100 shadow-lg sm:p-3">
 				<div class="flex items-center justify-between flex-wrap">
 					<div class="w-0 flex-1 flex items-center">
-						<span class="flex p-2 rounded-lg bg-gray-300 dark:bg-dark-secondary">
+						<span class="flex p-2 rounded-lg bg-gray-300">
 							<heroicons-outline-download class="fill-current text-gray-200 h-6 w-6" aria-hidden="true" />
 						</span>
 						<p class="ml-3 font-medium text-white truncate">
@@ -29,10 +29,6 @@
 								text-sm
 								font-medium
 								text-gray-200
-								bg-discord-blurple-530
-								dark:bg-dark-secondary
-								hover:bg-dark-primary
-								dark:hover:bg-hover:bg-dark-primary
 								focus:outline-none
 								focus-visible:ring-1 focus-visible:ring-white
 							"

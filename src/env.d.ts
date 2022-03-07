@@ -7,5 +7,4 @@ declare module '*.vue' {
   export default component
 }
 
-declare module 'remark-vue-renderer';
-declare module 'remark-render';
+declare module 'theme-change'
