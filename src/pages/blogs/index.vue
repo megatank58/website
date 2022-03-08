@@ -26,10 +26,11 @@
 				shadow-lg
 				hover:shadow-xl
 				rounded-lg
+				w-full
 			"
 		>
 			<router-link :to="/blogs/ + blog.name" class="font-sans text-base-content">
-				<div v-html="blog.content" class="mr-2"></div>
+				<div class="mr-2" v-html="blog.content"></div>
 				<p class="font-sans text-base-content">
 					{{
 						new Date(blog.createdAt).getDate() +
@@ -79,7 +80,7 @@ export default defineComponent({
 										blog.path.split('/')[1],
 								)
 							).text(),
-							256,
+							128,
 						),
 					),
 					createdAt: (
