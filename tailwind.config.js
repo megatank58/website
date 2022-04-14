@@ -3,9 +3,8 @@ module.exports = {
 	purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 	daisyui: {
     themes: [
-      'light',
+      'halloween',
     ],
-    darkTheme: 'forest'
   },
 	plugins: [require('@tailwindcss/typography'), require('daisyui')],
 };
