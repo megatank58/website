@@ -3,38 +3,6 @@
     { 
       "source": "/(.*)", 
       "destination": "/index.html" 
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "gh.megatank58.me"
-        }
-      ],
-      "destination": "/gh/:path*"
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "github.megatank58.me"
-        }
-      ],
-      "destination": "/gh/:path*"
-    }
-  ],
-  "redirects": [
-    { 
-      "source": "/github", 
-      "destination": "https://github.com/megatank58/", 
-      "permanent": true 
-    },
-    { 
-      "source": "/gh", 
-      "destination": "https://github.com/megatank58/", 
-      "permanent": true 
     }
   ]
 }

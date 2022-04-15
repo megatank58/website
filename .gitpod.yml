@@ -5,9 +5,6 @@ github:
     addLabel: Preview Ready in GitPod
 
 tasks:
-  - name: Build Test
-    init: yarn
-    command: yarn build
   - name: Developer Preview
     init: yarn
     command: yarn dev

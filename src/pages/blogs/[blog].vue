@@ -29,16 +29,12 @@
 </template>
 
 <script lang="ts">
-import { useRoute, useRouter } from 'vue-router';
 import { defineComponent } from 'vue-demi';
-import { parseMarkdown } from '~/util';
+import { Blog } from '~/types/Blog';
+
+declare const BLOGS: Blog[];
 
 export default defineComponent({
-	setup() {
-		return {
-			route: useRoute().fullPath,
-		};
-	},
 	data() {
 		return {
 			blog: '',
@@ -49,14 +45,8 @@ export default defineComponent({
 	},
 	methods: {
 		async getBlog() {
-			let path = useRouter().currentRoute.value.fullPath.replace('blogs/', '');
-			path = path.replace('blogs/', '').replace('#' + path.split('#')[1], '');
-			const text = await (
-				await fetch(
-					'https://raw.githubusercontent.com/Megatank58/website/main/blogs/' + path + '.md',
-				)
-			).text();
-			this.blog = parseMarkdown(text);
+			const name = (this.$route.params.blog as string).replaceAll('-', ' ').toLowerCase();
+			this.blog = BLOGS.find(blog => blog.name.toLowerCase() === name)?.content ?? ''
 		},
 	},
 });

@@ -29,16 +29,10 @@
 </template>
 
 <script lang="ts">
-import { useRoute, useRouter } from 'vue-router';
 import { defineComponent } from 'vue-demi';
 import { parseMarkdown } from '~/util';
 
 export default defineComponent({
-	setup() {
-		return {
-			route: useRoute().fullPath,
-		};
-	},
 	data() {
 		return {
 			readme: '',
@@ -49,10 +43,9 @@ export default defineComponent({
 	},
 	methods: {
 		async getReadme() {
-			let path =
-				useRouter().currentRoute.value.fullPath;
-			path = (path.replace('/projects/', '') + '/main/README.md').replace('#' + path.split('#')[1], '');
-			const text = await (await fetch('https://raw.githubusercontent.com/Megatank58/' + path)).text()
+			const text = await (
+				await fetch('https://raw.githubusercontent.com/Megatank58/' + this.$route.params.project as string + '/main/README.md')
+			).text();
 			this.readme = parseMarkdown(text);
 		},
 	},
