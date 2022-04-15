@@ -1,8 +1,8 @@
 <template>
-	<div class="flex items-center flex-col px-4">
+	<div class="flex items-center flex-col px-4 bg-base-200">
 		<div v-for="(project, index) in projects" :key="project.name + '_' + index" class="w-3/4 m-4">
 			<router-link :to="/projects/ + project.name">
-				<div class="card bg-base-200 shadow- hover:shadow-md">
+				<div class="card bg-base-300 hover:shadow-md">
 					<div class="card-body">
 						<h2 class="card-title">
 							{{ project.name }}

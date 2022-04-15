@@ -5,8 +5,7 @@ export interface Blogs {
 }
 
 export interface Blog {
-	name: string;
-	displayName: string;
+	display_name: string;
     content: string;
-	createdAt: string;
+	created_at: string;
 }

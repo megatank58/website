@@ -1,46 +1,45 @@
 <template>
-	<div class="flex items-stretch flex-col m-auto px-4">
-		<div
-			v-for="(blog, index) in blogs"
-			:key="blog + '_' + index"
-			class="
-				prose
-				prose-pre:text-neutral-content prose-pre:p-3 prose-pre:rounded prose-pre:overflow-x-auto
-				max-w-none
-				prose-a:text-primary prose-a:no-underline
-				prose-img:inline prose-img:m-1
-				prose-p:m-1
-				prose-h1:border-border prose-h1:border-b prose-h1:mt-1 prose-h1:text-bold
-				prose-h2:border-b
-				prose-h2:mt-1
-				prose-h2:text-bold
-				prose-h2:border-solid
-				prose-h2:border-border
-				flex
-				items-stretch
-				flex-col
-				m-auto
-				py-2.5
-				px-4
-				mt-3.5
-				shadow-lg
-				hover:shadow-xl
-				rounded-lg
-				w-full
-			"
-		>
-			<router-link :to="/blogs/ + blog.name" class="font-sans text-base-content">
-				<div class="mr-2" v-html="blog.content"></div>
-				<p class="font-sans text-base-content">
-					{{
-						new Date(blog.createdAt).getDate() +
-						'/' +
-						(new Date(blog.createdAt).getMonth() + 1) +
-						'/' +
-						new Date(blog.createdAt).getFullYear()
-					}}
-				</p>
-			</router-link>
+	<div class="flex items-center flex-col px-4 bg-base-200">
+		<div v-for="(blog, index) in blogs" :key="blog + '_' + index" class="w-3/4 m-4">
+			<div class="card bg-base-300 hover:shadow-md">
+				<div class="card-body">
+					<h2 class="card-title">
+						{{ blog.display_name }}
+					</h2>
+
+					<div
+						class="
+							prose
+							prose-pre:text-neutral-content
+							prose-pre:p-3
+							prose-pre:rounded
+							prose-pre:overflow-x-auto
+							max-w-none
+							prose-a:text-primary prose-a:no-underline
+							prose-img:inline prose-img:m-1
+							prose-p:m-1
+							prose-h1:border-border prose-h1:border-b prose-h1:mt-1 prose-h1:text-bold
+							prose-h2:border-b
+							prose-h2:mt-1
+							prose-h2:text-bold
+							prose-h2:border-solid
+							prose-h2:border-border
+						"
+						v-html="blog.content"
+					></div>
+					<div class="card-actions justify-end">
+						<div class="badge badge-outline">
+							{{
+								new Date(blog.created_at).getDate() +
+								'/' +
+								(new Date(blog.created_at).getMonth() + 1) +
+								'/' +
+								new Date(blog.created_at).getFullYear()
+							}}
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -69,9 +68,9 @@ export default defineComponent({
 			);
 			const _blogs = new Array<Blog>();
 			for (const blog of blogs) {
+				const display_name = blog.path.split('/')[1].replace('.md', '').replaceAll('-', ' ');
 				_blogs.push({
-					name: blog.path.split('/')[1].replace('.md', ''),
-					displayName: blog.path.split('/')[1].replace('.md', '').replaceAll('-', ' '),
+					display_name,
 					content: parseMarkdown(
 						trim(
 							await (
@@ -83,7 +82,7 @@ export default defineComponent({
 							128,
 						),
 					),
-					createdAt: (
+					created_at: (
 						await (
 							await fetch(
 								'https://api.github.com/repos/megatank58/website/commits?path=blogs%2F' +
