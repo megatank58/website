@@ -1,11 +1,11 @@
 <template>
 	<div class="navbar mb-2 shadow-xl text-base-content">
-		<div class="px-2 mx-2 navbar-start">
+		<div class="pl-1 mx-2 navbar-start">
 			<router-link class="text-lg font-bold text-primary" to="/">Home</router-link>
 		</div>
 		<div class="hidden navbar-end lg:flex">
 			<div class="flex items-stretch">
-				<a href="https://git.io/megatank58" class="btn btn-ghost btn-sm rounded-btn normal-case">
+				<a href="https://git.io/megatank58" class="pr-2">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -23,10 +23,7 @@
 						></path>
 					</svg>
 				</a>
-				<a
-					class="btn btn-ghost btn-sm rounded-btn normal-case"
-					href="https://twitter.com/Megatank58"
-				>
+				<a href="https://twitter.com/Megatank58" class="pl-2">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -67,10 +64,7 @@
 				></label>
 				<ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box">
 					<li>
-						<a
-							href="https://git.io/megatank58"
-							class="btn btn-ghost btn-sm rounded-btn normal-case"
-						>
+						<a href="https://git.io/megatank58" class="pr-2">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -90,10 +84,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							class="btn btn-ghost btn-sm rounded-btn normal-case"
-							href="https://twitter.com/megatank58"
-						>
+						<a href="https://twitter.com/megatank58" class="pl-2">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								xmlns:xlink="http://www.w3.org/1999/xlink"

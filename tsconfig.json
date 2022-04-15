@@ -15,7 +15,7 @@
     "esModuleInterop": true,
     "removeComments": true,
     "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext", "DOM", "es2021"],
     "paths": {
 			"~/*": ["src/*"]
 		},
