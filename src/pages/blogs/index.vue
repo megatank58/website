@@ -79,7 +79,7 @@ export default defineComponent({
 										blog.path.split('/')[1],
 								)
 							).text(),
-							128,
+							200,
 						),
 					),
 					created_at: (
