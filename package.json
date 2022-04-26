@@ -3,9 +3,10 @@
   "version": "3.0.0",
   "license": "MIT",
   "scripts": {
+    "start": "vue-tsc --noEmit && vite build && vite preview",
+    "start:quick": "yarn && vite",
     "lint": "eslint src --ext .ts,.vue",
     "lint:fix": "eslint src --ext .ts,.vue --fix",
-    "start": "vue-tsc --noEmit && vite build && vite preview",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
