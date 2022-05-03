@@ -3,17 +3,16 @@
   "version": "3.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "vue-tsc --noEmit && vite build && vite preview",
-    "start:quick": "yarn && vite",
     "lint": "eslint src --ext .ts,.vue",
     "lint:fix": "eslint src --ext .ts,.vue --fix",
+    "start": "vue-tsc --noEmit && vite build && vite preview",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
   "dependencies": {
+    "@sapphire/time-utilities": "^1.7.4",
     "@tailwindcss/typography": "^0.5.2",
-    "@tauri-apps/api": "^1.0.0-rc.3",
     "daisyui": "^2.6.0",
     "highlight.js": "^11.3.1",
     "vue": "^3.2.16",
@@ -21,8 +20,6 @@
   },
   "devDependencies": {
     "@iconify/json": "^1.1.419",
-    "@tauri-apps/cli": "^1.0.0-rc.8",
-    "@tauri-apps/tauricon": "github:tauri-apps/tauricon",
     "@types/marked": "^4.0.2",
     "@types/node": "^17.0.24",
     "@types/nprogress": "^0.2.0",

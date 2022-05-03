@@ -14,13 +14,9 @@
 					<div>
 						<div class="card-actions justify-end pt-1">
 							<div class="badge badge-secondary rounded mr-auto">
-								{{
-									new Date(project.created_at).getDate() +
-									'/' +
-									(new Date(project.created_at).getMonth() + 1) +
-									'/' +
-									new Date(project.created_at).getFullYear() 
-								}}
+								Updated {{
+									timestamp.format(Date.now() - new Date(project.updated_at).getTime(), 1)
+								}} ago
 							</div>
 							<div class="badge badge-info rounded">{{ project.stargazers_count }} Stars</div>
 							<div class="badge badge-info rounded">{{ project.watchers_count }} Watchers</div>
@@ -47,11 +43,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue-demi';
 import { Project } from '~/types/Project';
+import { DurationFormatter } from '@sapphire/time-utilities'
 
 export default defineComponent({
 	data() {
 		return {
 			projects: new Array<Project>(),
+			timestamp: new DurationFormatter()
 		};
 	},
 	async created() {

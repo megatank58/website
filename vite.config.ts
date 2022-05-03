@@ -7,7 +7,7 @@ import { resolve } from 'path';
 import { readdirSync, readFileSync } from 'fs';
 import { parseMarkdown } from './src/util/rawParseMarkdown';
 import { trim } from './src/util/Trim';
-import { Blog } from "./src/types/Blog";
+import { Blog } from './src/types/Blog';
 
 const BLOGS: Blog[] = [];
 
@@ -43,6 +43,7 @@ export default defineConfig({
 		ViteIcons(),
 	],
 	server: {
+		host: true,
 		hmr: {
 			protocol: 'wss',
 			port: 443,
