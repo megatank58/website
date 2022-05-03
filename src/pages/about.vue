@@ -2,27 +2,15 @@
 	<div
 		class="
 			prose
-			prose-pre:text-neutral-content prose-pre:p-3 prose-pre:rounded prose-pre:overflow-x-auto
 			max-w-none
-			prose-a:text-primary prose-a:no-underline
-			prose-img:inline prose-img:m-1
-			prose-p:m-1
-			prose-h1:border-border prose-h1:border-b prose-h1:mt-1 prose-h1:text-bold
-			prose-h2:border-b
-			prose-h2:mt-1
-			prose-h2:text-bold
-			prose-h2:border-solid
-			prose-h2:border-border
-			flex
-			items-stretch
-			flex-col
-			m-auto
-			py-2.5
-			px-4
-			mt-3.5
-			shadow-lg
-			hover:shadow-xl
+			m-16
+			p-4
 			rounded-lg
+			shadow-lg
+			border-t-2 border-l-4 border-neutral-focus
+			prose-pre:p-3 prose-pre:rounded prose-pre:overflow-x-auto
+			prose-a:text-primary prose-a:no-underline
+			prose-img:inline prose-img:m-1 prose-p:m-1 prose-h1:my-4 prose-h2:my-4
 		"
 		v-html="profile"
 	></div>
