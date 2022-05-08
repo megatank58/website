@@ -19,8 +19,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue-demi';
 import { Blog } from '~/types/Blog';
-
-declare const BLOGS: Blog[];
+import { parseMarkdown, useFetch } from '~/util';
 
 export default defineComponent({
 	data() {
@@ -33,8 +32,8 @@ export default defineComponent({
 	},
 	methods: {
 		async getBlog() {
-			const name = (this.$route.params.blog as string).replaceAll('-', ' ').toLowerCase();
-			this.blog = BLOGS.find((blog) => blog.name.toLowerCase() === name)?.content ?? '';
+			const data = await useFetch<Blog>('/blogs/' + this.$route.params.blog)
+			this.blog = parseMarkdown(data.content ?? '');
 		},
 	},
 });

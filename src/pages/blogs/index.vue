@@ -39,8 +39,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Blog } from '~/types/Blog';
-
-declare const BLOGS: Blog[];
+import { parseMarkdown, trim, useFetch } from '~/util';
 
 export default defineComponent({
 	data() {
@@ -53,11 +52,12 @@ export default defineComponent({
 	},
 	methods: {
 		async getBlogs() {
+			const data = await useFetch<Blog[]>('/blogs');
 			const blogs = new Array<Blog>();
-			for (const blog of BLOGS) {
+			for (const blog of data) {
 				blogs.push({
 					name: blog.name,
-					header: blog.header,
+					header: parseMarkdown(trim(blog.content ?? '', 256)),
 				});
 			}
 			this.blogs = blogs.reverse();
