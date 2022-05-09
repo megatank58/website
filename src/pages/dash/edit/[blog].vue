@@ -35,9 +35,8 @@ import { Blog } from "~/types/Blog";
 export default defineComponent({
     data() {
         return {
-            postBlog() {
-                useFetch(`/blogs/${(document.getElementById("name") as HTMLInputElement)?.value}/set/'${(document.getElementById("content") as HTMLInputElement).value}'`, true);
-
+            async postBlog() {
+                console.log(await useFetch(`/blogs/${(document.getElementById("name") as HTMLInputElement)?.value}/set`, { content: (document.getElementById("content") as HTMLInputElement).value }));
             }
         }
     },

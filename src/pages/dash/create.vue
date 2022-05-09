@@ -5,7 +5,7 @@
             id="name"
             type="text"
             placeholder="Enter blog name"
-            class="input input-ghost input-bordered input-info w-full max-w-xs mt-2"
+            class="input input-ghost input-bordered w-full max-w-xs mt-2"
         />
         <label for="name"></label>
         <textarea
@@ -34,9 +34,8 @@ import { defineComponent } from 'vue';
 export default defineComponent({
     data() {
         return {
-            postBlog() {
-                useFetch(`/blogs/${(document.getElementById("name") as HTMLInputElement)?.value}/create/${(document.getElementById("content") as HTMLInputElement).value}`);
-
+            async postBlog() {
+                console.log(await useFetch(`/blogs/${(document.getElementById("name") as HTMLInputElement)?.value}/create`, { content: (document.getElementById("content") as HTMLInputElement).value }));
             }
         }
     }
