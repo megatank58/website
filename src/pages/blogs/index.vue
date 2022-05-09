@@ -1,7 +1,7 @@
 <template>
 	<div class="flex items-center flex-col px-4 bg-base-200">
 		<div v-for="(blog, index) in blogs" :key="blog + '_' + index" class="w-3/4 m-4">
-			<router-link :to="/blogs/ + blog.name.split(' ').join('-')" class="font-sans text-base-content">
+			<router-link :to="/blogs/ + blog.name" class="font-sans text-base-content">
 				<div class="card bg-base-300 hover:shadow-md">
 					<div class="card-body">
 						<h2 class="card-title">

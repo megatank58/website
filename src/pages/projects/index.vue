@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue-demi';
+import { defineComponent } from 'vue';
 import { Project } from '~/types/Project';
 import { DurationFormatter } from '@sapphire/time-utilities';
 import { useFetch } from '~/util';

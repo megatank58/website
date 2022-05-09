@@ -1,7 +1,7 @@
 <template>
 	<div class="hero mt-20">
 		<div class="hero-content flex-col lg:flex-row">
-			<img src="/src/assets/logo.png" class="float-left pb-2" />
+			<img src="/logo.png" class="float-left pb-2" />
 			<div>
 				<h1 class="text-5xl font-bold">Hi there!</h1>
 				<p class="py-6">

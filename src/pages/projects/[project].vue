@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue-demi';
+import { defineComponent } from 'vue';
 import { parseMarkdown, useFetch } from '~/util';
 
 export default defineComponent({
