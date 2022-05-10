@@ -6,7 +6,7 @@
 import { useRouter } from "vue-router";
 import { useFetch } from "~/util";
 
-const token = await useFetch<string>({ route: `/auth/code=${useRouter().currentRoute.value.query.code}`, getString: true });
+const token = await useFetch<string>({ route: `/auth/${useRouter().currentRoute.value.query.code}`, getString: true });
 
 localStorage.setItem('token',  new URLSearchParams(token).get('access_token') ?? '');
 </script>
