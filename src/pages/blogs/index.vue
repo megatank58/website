@@ -52,7 +52,7 @@ export default defineComponent({
 	},
 	methods: {
 		async getBlogs() {
-			const data = await useFetch<Blog[]>('/blogs');
+			const data = await useFetch<Blog[]>({ route: '/blogs' });
 			const blogs = new Array<Blog>();
 			for (const blog of data) {
 				blogs.push({

@@ -35,7 +35,7 @@ export default defineComponent({
     data() {
         return {
             async postBlog() {
-                console.log(await useFetch(`/blogs/${(document.getElementById("name") as HTMLInputElement)?.value}/create`, { content: (document.getElementById("content") as HTMLInputElement).value }));
+                await useFetch({ route: `/blogs/${(document.getElementById("name") as HTMLInputElement)?.value}/create`, body: { content: (document.getElementById("content") as HTMLInputElement).value }});
             }
         }
     }

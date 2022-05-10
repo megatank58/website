@@ -1,9 +1,19 @@
 export const API_URL = 'https://bd.megatank58.me';
 
-export async function useFetch<T>(route: string, stringOrBody?: boolean | object): Promise<T> {
-	const data = await fetch(API_URL + route, {
-		body: typeof stringOrBody === 'object' ? JSON.stringify(stringOrBody) : null,
-		method: typeof stringOrBody === 'object' ? "POST" : "GET"
+export interface FetchOptions {
+	route: string;
+	post?: boolean;
+	getString?: boolean;
+	body?: Record<string, string>;
+}
+
+export async function useFetch<T>(options: FetchOptions): Promise<T> {
+	const data = await fetch(API_URL + options.route, {
+		body: JSON.stringify(options.body) ?? null,
+		method: options.post ? 'POST' : 'GET',
+		headers: {
+			Authorization: `${localStorage.getItem('token')}`,
+		},
 	});
-	return stringOrBody ? ((await data.text()) as unknown as T) : ((await data.json()) as T);
+	return options.getString ? ((await data.text()) as unknown as T) : ((await data.json()) as T);
 }

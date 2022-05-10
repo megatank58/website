@@ -1,17 +1,14 @@
 <template>
     <div class="flex items-center flex-col px-4 bg-base-200">
         <div v-for="(blog, index) in blogs" :key="blog + '_' + index" class="w-3/4 m-4">
-            <router-link
-                :to="'/dash/edit/' + blog.name"
-                class="font-sans text-base-content"
-            >
-                <div class="card bg-base-300" :id="blog.name">
+            <router-link :to="'/dash/edit/' + blog.name" class="font-sans text-base-content">
+                <div :id="blog.name" class="card bg-base-300">
                     <div class="card-body">
                         <h2 class="card-title">
                             {{ blog.name }}
                             <button
-                                v-on:click="deleteBlog(blog.name)"
                                 class="ml-auto badge badge-error rounded"
+                                @click="deleteBlog(blog.name)"
                             >X</button>
                         </h2>
 
@@ -36,7 +33,8 @@ export default defineComponent({
         return {
             blogs: new Array<Blog>(),
             async deleteBlog(name: string) {
-                useFetch(`/blogs/${name}/delete`, true)
+                useFetch({ route: `/blogs/${name}/delete`, getString: true })
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 document.getElementById(name)?.parentNode?.removeChild(document.getElementById(name)!)
             }
         };
@@ -46,7 +44,7 @@ export default defineComponent({
     },
     methods: {
         async getBlogs() {
-            const data = await useFetch<Blog[]>('/blogs');
+            const data = await useFetch<Blog[]>({ route: '/blogs' });
             const blogs = new Array<Blog>();
             for (const blog of data) {
                 blogs.push({

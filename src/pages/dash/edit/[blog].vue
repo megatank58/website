@@ -36,7 +36,7 @@ export default defineComponent({
     data() {
         return {
             async postBlog() {
-                console.log(await useFetch(`/blogs/${(document.getElementById("name") as HTMLInputElement)?.value}/set`, { content: (document.getElementById("content") as HTMLInputElement).value }));
+                useFetch({ route: `/blogs/${(document.getElementById("name") as HTMLInputElement)?.value}/set`, body: { content: (document.getElementById("content") as HTMLInputElement).value }});
             }
         }
     },
@@ -45,7 +45,7 @@ export default defineComponent({
     },
     methods: {
         async getBlog() {
-            const data = await useFetch<Blog>(`/blogs/${this.$route.params.blog}`);
+            const data = await useFetch<Blog>({ route: `/blogs/${this.$route.params.blog}` });
             (document.getElementById("name") as HTMLInputElement).value = data.name;
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             (document.getElementById("content") as HTMLInputElement).value = data.content!;

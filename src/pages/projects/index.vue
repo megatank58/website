@@ -54,7 +54,7 @@ export default defineComponent({
 	},
 	methods: {
 		async getProjects() {
-			const data = await useFetch<Project[]>('/projects');
+			const data = await useFetch<Project[]>({ route: '/projects' });
 
 			this.projects = data
 				.sort((x, y) => {
