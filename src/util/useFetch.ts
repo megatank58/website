@@ -2,7 +2,6 @@ export const API_URL = 'https://bd.megatank58.me';
 
 export interface FetchOptions {
 	route: string;
-	post?: boolean;
 	getString?: boolean;
 	body?: Record<string, string>;
 }
@@ -10,7 +9,7 @@ export interface FetchOptions {
 export async function useFetch<T>(options: FetchOptions): Promise<T> {
 	const data = await fetch(API_URL + options.route, {
 		body: JSON.stringify(options.body) ?? null,
-		method: options.post ? 'POST' : 'GET',
+		method: options.body ? 'POST' : 'GET',
 		headers: {
 			Authorization: `${localStorage.getItem('token')}`,
 		},
