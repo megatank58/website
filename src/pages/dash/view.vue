@@ -33,7 +33,7 @@ export default defineComponent({
         return {
             blogs: new Array<Blog>(),
             async deleteBlog(name: string) {
-                useFetch({ route: `/blogs/${name}/delete`, getString: true })
+                useFetch({ route: `/blogs/delete/${name}`, getString: true })
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 document.getElementById(name)?.parentNode?.removeChild(document.getElementById(name)!)
             }
