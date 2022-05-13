@@ -1,4 +1,4 @@
-export const API_URL = 'https://bd.megatank58.me';
+const API_URL = 'https://8080-megatank58-website-eucv5xdt8m8.ws-us44.gitpod.io'
 
 export interface FetchOptions {
 	route: string;
@@ -12,6 +12,7 @@ export async function useFetch<T>(options: FetchOptions): Promise<T> {
 		method: options.body ? 'POST' : 'GET',
 		headers: {
 			Authorization: `${localStorage.getItem('token')}`,
+			"Content-Type": "application/json"
 		},
 	});
 	return options.getString ? ((await data.text()) as unknown as T) : ((await data.json()) as T);

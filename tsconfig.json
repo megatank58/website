@@ -4,7 +4,7 @@
     "noEmit": true,
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "types": ["vite/client", "vite-plugin-pages/client"],
+    "types": ["node", "vite/client", "vite-plugin-pages/client"],
     "module": "ESNext",
     "moduleResolution": "node",
     "strict": true,
