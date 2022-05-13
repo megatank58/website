@@ -1,4 +1,4 @@
-const API_URL = 'https://8080-megatank58-website-eucv5xdt8m8.ws-us44.gitpod.io'
+const API_URL = 'https://bd.megatank58.me'
 
 export interface FetchOptions {
 	route: string;
