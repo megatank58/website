@@ -1,6 +1,6 @@
 <template>
 	<div class="grid grid-cols-1 mt-4 px-4">
-		<h1 class="font-bold text-2xl mx-auto">Write a new blog</h1>
+		<h1 class="font-bold text-2xl mx-auto">Post latest updates</h1>
 		<input
 			id="name"
 			type="text"

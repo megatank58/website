@@ -1,5 +1,29 @@
 <template>
 	<div class="flex items-center flex-col px-4 bg-base-200">
+		<div class="alert shadow-lg w-3/4">
+			<div>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					class="stroke-info flex-shrink-0 w-6 h-6"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+					></path>
+				</svg>
+				<div>
+					<h3 class="font-bold">Post latest updates</h3>
+					<div class="text-xs">Have any new ideas?</div>
+				</div>
+			</div>
+			<div class="flex-none">
+				<router-link to="/dash/create" class="btn btn-primary btn-sm">Create</router-link>
+			</div>
+		</div>
 		<div v-for="(blog, index) in blogs" :key="blog + '_' + index" class="w-3/4 m-4">
 			<div :id="blog.name" class="card bg-base-300">
 				<div class="card-body">
