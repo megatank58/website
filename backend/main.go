@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -10,11 +12,11 @@ import (
 )
 
 func main() {
-	database.Setup()
+	database.Open(os.Getenv("DATABASE_URL"))
 
 	app := fiber.New()
 
-	app.Get("/", routes.Redirect)
+	app.Get("/", routes.Ping)
 	app.Get("/projects", routes.ProjectsGet)
 	app.Get("/blogs", routes.BlogsGet)
 	app.Post("/avatar", routes.AvatarGet)

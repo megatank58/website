@@ -2,11 +2,17 @@ package database
 
 import (
 	"context"
-	"os"
+	"database/sql"
+	"log"
 
-	"github.com/georgysavva/scany/pgxscan"
-	"github.com/jackc/pgx/v4/pgxpool"
+	"entgo.io/ent/dialect"
+	entsql "entgo.io/ent/dialect/sql"
+	_ "github.com/jackc/pgx/v4/stdlib"
+	"github.com/megatank58/backend/ent"
+	"github.com/megatank58/backend/ent/blog"
 )
+
+var client *ent.Client
 
 type Blog struct {
 	Id      string `json:"id,omitempty"`
@@ -14,50 +20,33 @@ type Blog struct {
 	Content string `json:"content,omitempty"`
 }
 
-func Setup() (context.Context, *pgxpool.Pool) {
-	ctx := context.Background()
-	db, _ := pgxpool.Connect(context.Background(), os.Getenv("DATABASE_URL"))
+func Open(databaseUrl string) {
+	db, err := sql.Open("pgx", databaseUrl)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	return ctx, db
+	// Create an ent.Driver from `db`.
+	drv := entsql.OpenDB(dialect.Postgres, db)
+	client = ent.NewClient(ent.Driver(drv))
 }
 
-func GetBlogs() []*Blog {
-	ctx, db := Setup()
-
-	var blogs []*Blog
-	pgxscan.Select(ctx, db, &blogs, "SELECT name, content FROM blogs")
-
-	return blogs
+func GetBlogs() ([]*ent.Blog, error) {
+	return client.Blog.Query().All(context.Background())
 }
 
-func GetBlog(name string) *Blog {
-	ctx, db := Setup()
-
-	var blogs []*Blog
-	pgxscan.Select(ctx, db, &blogs, "SELECT name, content FROM blogs WHERE name='"+name+"'")
-
-	return blogs[0]
+func GetBlog(name string) (*ent.Blog, error) {
+	return client.Blog.Query().Where(blog.NameContains(name)).First(context.Background())
 }
 
-func CreateBlog(name string, content string) *Blog {
-	ctx, db := Setup()
-
-	var blogs []*Blog
-	pgxscan.Select(ctx, db, &blogs, "INSERT INTO blogs (name, content) VALUES('"+name+"','"+content+"') RETURNING *")
-
-	return blogs[0]
+func CreateBlog(name string, content string) *ent.Blog {
+	return client.Blog.Create().SetName(name).SetContent(content).SaveX(context.Background())
 }
 
-func DeleteBlog(name string) {
-	ctx, db := Setup()
-
-	var blogs []*Blog
-	pgxscan.Select(ctx, db, &blogs, "DELETE FROM blogs WHERE name='"+name+"'")
+func DeleteBlog(name string) int {
+	return client.Blog.Delete().Where(blog.Name(name)).ExecX(context.Background())
 }
 
-func SetBlog(name string, content string) {
-	ctx, db := Setup()
-
-	var blogs []*Blog
-	pgxscan.Select(ctx, db, &blogs, "UPDATE blogs SET content='"+content+"'WHERE name='"+name+"'")
+func SetBlog(name string, content string) int {
+	return client.Blog.Update().Where(blog.Name(name)).SetName(name).SetContent(content).SaveX(context.Background())
 }

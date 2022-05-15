@@ -1,8 +1,6 @@
 package routes
 
 import (
-	"encoding/json"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/megatank58/backend/utils/database"
 	"github.com/megatank58/backend/utils/request"
@@ -23,7 +21,7 @@ func BlogCreate(ctx *fiber.Ctx) error {
         return err
     }
 
-	data, _ := json.Marshal(database.CreateBlog(ctx.Params("blog"), payload.Content))
+	data := database.CreateBlog(ctx.Params("blog"), payload.Content)
 
-	return ctx.Status(200).Send(data)
+	return ctx.Status(200).JSON(data)
 }

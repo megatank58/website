@@ -21,7 +21,7 @@ func BlogSet(ctx *fiber.Ctx) error {
         return err
     }
 
-	database.SetBlog(ctx.Params("blog"), payload.Content)
+	data := database.SetBlog(ctx.Params("blog"), payload.Content)
 
-	return ctx.Status(200).SendString("OK")
+	return ctx.Status(200).JSON(data)
 }

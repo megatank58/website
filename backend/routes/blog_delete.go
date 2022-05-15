@@ -15,7 +15,7 @@ func BlogDelete(ctx *fiber.Ctx) error {
 		return ctx.Status(401).SendString("Access token is invalid or not of the user")
 	}
 
-	database.DeleteBlog(ctx.Params("blog"))
+	data := database.DeleteBlog(ctx.Params("blog"))
 
-	return ctx.Status(200).SendString("OK")
+	return ctx.Status(200).JSON(data)
 }
