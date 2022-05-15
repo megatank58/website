@@ -39,6 +39,19 @@ func CheckAuthentication(token string) bool {
 	}
 }
 
+func Avatar(token string) map[string]string {
+	client := &http.Client{}
+	req, _ := http.NewRequest("GET", "https://api.github.com/user", nil)
+	req.Header.Set("Authorization", "token "+token)
+	res, _ := client.Do(req)
+
+	data, _ := ioutil.ReadAll(res.Body)
+	obj := make(map[string]string)
+	_ = json.Unmarshal([]byte(data), &obj)
+
+	return obj
+}
+
 func Oauth(route string) []byte {
 	return request(route, "https://github.com/login/oauth/", "")
 }

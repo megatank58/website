@@ -43,8 +43,7 @@ func CreateBlog(name string, content string) *Blog {
 	ctx, db := Setup()
 
 	var blogs []*Blog
-	pgxscan.Select(ctx, db, &blogs, "INSERT INTO blogs (name, content) VALUES('"+name+"','"+content+"')")
-	pgxscan.Select(ctx, db, &blogs, "SELECT name, content FROM blogs WHERE name='"+name+"'")
+	pgxscan.Select(ctx, db, &blogs, "INSERT INTO blogs (name, content) VALUES('"+name+"','"+content+"') RETURNING *")
 
 	return blogs[0]
 }
