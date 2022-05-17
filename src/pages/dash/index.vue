@@ -16,7 +16,7 @@
 					></path>
 				</svg>
 				<div>
-					<h3 class="font-bold">Post latest updates</h3>
+					<h3 class="font-bold">Create a new blog</h3>
 					<div class="text-xs">Have any new ideas?</div>
 				</div>
 			</div>

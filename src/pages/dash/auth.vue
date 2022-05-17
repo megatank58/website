@@ -10,5 +10,5 @@ const token = await useFetch<string>({ route: `/auth/${useRouter().currentRoute.
 
 localStorage.setItem('token',  new URLSearchParams(token).get('access_token') ?? '');
 
-useRouter().push("/")
+useRouter().push("/dash/create")
 </script>
