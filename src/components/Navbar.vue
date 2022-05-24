@@ -5,8 +5,13 @@
 		</div>
 		<div class="navbar-end flex">
 			<div class="flex items-stretch">
-				<div class="avatar">
+				<div v-if="isAuthenticated" class="avatar">
 					<div id="imageholder" class="w-8 rounded-full mr-2"></div>
+				</div>
+				<div v-if="!isAuthenticated" class="avatar placeholder">
+					<div class="bg-neutral-focus text-neutral-content w-8 rounded-full mr-2">
+						<span class="text-2xl">M</span>
+					</div>
 				</div>
 				<a href="https://git.io/megatank58" class="pr-2">
 					<svg
@@ -54,7 +59,14 @@ import { useFetch } from '~/util';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+	data() {
+		return {
+			isAuthenticated: Boolean(localStorage.getItem('token'))
+		}
+	},
 	async created() {
+		if (!this.isAuthenticated) return;
+		
 		const imageURL = await useFetch<string>({ route: '/avatar', getString: true, body: {} });
 
 		const div = document.getElementById('imageholder');
