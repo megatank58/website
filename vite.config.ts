@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import Pages from 'vite-plugin-pages';
 import ViteComponents from 'vite-plugin-components';
-import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons';
 import { resolve } from 'path';
 export default defineConfig({
 	resolve: {
@@ -13,14 +12,7 @@ export default defineConfig({
 	plugins: [
 		Vue(),
 		Pages(),
-		ViteComponents({
-			customComponentResolvers: [
-				ViteIconsResolver({
-					componentPrefix: '',
-				}),
-			],
-		}),
-		ViteIcons(),
+		ViteComponents(),
 	],
 	server: {
 		host: true,
@@ -30,7 +22,7 @@ export default defineConfig({
 		},
 	},
 	optimizeDeps: {
-		include: ['vue', 'vue-router', '@vueuse/core'],
+		include: ['vue', 'vue-router'],
 		exclude: ['vue-demi'],
 	},
 });
