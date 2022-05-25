@@ -6,6 +6,7 @@
     "lint": "eslint src --ext .ts,.vue",
     "lint:fix": "eslint src --ext .ts,.vue --fix",
     "start": "vue-tsc --noEmit && vite build && vite preview",
+    "dev": "DEV=TRUE vite & cd backend && go run main.go",
     "dev:frontend": "DEV=TRUE vite",
     "dev:backend": "cd backend && air",
     "build": "vue-tsc --noEmit && vite build",
