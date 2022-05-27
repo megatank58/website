@@ -30,7 +30,6 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
 import { Blog } from '~/types/Blog';
 import { parseMarkdown, trim, useFetch } from '~/util';
 

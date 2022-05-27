@@ -1,24 +1,4 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "noEmit": true,
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "types": ["node", "vite/client", "vite-plugin-pages/client"],
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "strict": true,
-    "alwaysStrict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "removeComments": true,
-    "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
-    "lib": ["ESNext", "DOM", "es2021"],
-    "paths": {
-			"~/*": ["src/*"]
-		},
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json"
 }

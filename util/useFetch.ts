@@ -7,6 +7,8 @@ export interface FetchOptions {
 }
 
 export async function useFetch<T>(options: FetchOptions): Promise<T> {
+	if (!localStorage) return;
+
 	const data = await fetch(API_URL + options.route, {
 		body: JSON.stringify(options.body) ?? null,
 		method: options.body ? 'POST' : 'GET',

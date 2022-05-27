@@ -1,16 +1,8 @@
-# Packages
 node_modules
-**/node_modules
-
-dist/
-
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-*.log
-
-# Runtime data
-*pid*
-*.seed
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
+dist

@@ -47,7 +47,6 @@
 
 <script lang="ts">
 import { parseMarkdown, useFetch } from '~/util';
-import { defineComponent } from 'vue';
 import { Blog } from '~/types/Blog';
 
 export default defineComponent({

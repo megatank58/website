@@ -47,9 +47,7 @@
 
 <script lang="ts">
 import { useFetch } from '~/util';
-import { defineComponent } from 'vue';
 import { parseMarkdown } from '~/util';
-import { useRouter } from 'vue-router';
 
 export default defineComponent({
 	data() {
@@ -60,7 +58,7 @@ export default defineComponent({
 					route: `/blogs/create/${(document.getElementById('name') as HTMLInputElement)?.value}`,
 					body: { content: (document.getElementById('content') as HTMLInputElement).value },
 				});
-				useRouter().push('/dash/view');
+				alert('Blog posted successfully!');
 			},
 			async renderBlog() {
 				this.renderData = parseMarkdown(
