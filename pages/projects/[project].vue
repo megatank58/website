@@ -1,7 +1,6 @@
 <template>
 	<div
-		class="
-			font-mono
+		class="			font-mono
 			prose
 			max-w-none
 			m-16
@@ -16,30 +15,31 @@
 			prose-h1:my-4
 			prose-h1:border-b
 			prose-h2:my-4
-			prose-h2:border-b
-		"
-		v-html="blog"
+			prose-h2:border-b"
+		v-html="readme"
 	></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { Blog } from '~/types/Blog';
 import { parseMarkdown, useFetch } from '~/util';
 
 export default defineComponent({
 	data() {
 		return {
-			blog: '',
+			readme: '',
 		};
 	},
 	async created() {
-		await this.getBlog();
+		await this.getReadme();
 	},
 	methods: {
-		async getBlog() {
-			const data = await useFetch<Blog>({ route: '/blogs/' + this.$route.params.blog });
-			this.blog = parseMarkdown(data.content ?? '');
+		async getReadme() {
+			const text = await useFetch<string>({
+				route: '/projects/' + this.$route.params.project as string,
+				getString: true
+			});
+
+			this.readme = parseMarkdown(text);
 		},
 	},
 });

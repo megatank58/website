@@ -46,28 +46,37 @@
 </template>
 
 <script lang="ts">
-import { useFetch } from '~/util';
-import { defineComponent } from 'vue';
-import { parseMarkdown } from '~/util';
-import { useRouter } from 'vue-router';
+import { getToken, parseMarkdown, useFetch } from '~/util';
+import { Blog } from '~/types/Blog';
 
 export default defineComponent({
 	data() {
 		return {
-			renderData: '',
 			async postBlog() {
-				await useFetch({
-					route: `/blogs/create/${(document.getElementById('name') as HTMLInputElement)?.value}`,
+				useFetch({
+					route: `/blogs/set/${(document.getElementById('name') as HTMLInputElement)?.value}`,
 					body: { content: (document.getElementById('content') as HTMLInputElement).value },
+					token: getToken(),
 				});
-				useRouter().push('/dash/view');
 			},
 			async renderBlog() {
 				this.renderData = parseMarkdown(
 					(document.getElementById('content') as HTMLInputElement).value,
 				);
 			},
+			renderData: '',
 		};
+	},
+	async created() {
+		await this.getBlog();
+	},
+	methods: {
+		async getBlog() {
+			const data = await useFetch<Blog>({ route: `/blogs/${this.$route.params.blog}` });
+			(document.getElementById('name') as HTMLInputElement).value = data.name;
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			(document.getElementById('content') as HTMLInputElement).value = data.content!;
+		},
 	},
 });
 </script>

@@ -5,14 +5,23 @@
 		</div>
 		<div class="navbar-end flex">
 			<div class="flex items-stretch">
-				<div v-if="isAuthenticated" class="avatar">
-					<div id="imageholder" class="w-8 rounded-full mr-2"></div>
-				</div>
-				<div v-if="!isAuthenticated" class="avatar placeholder">
-					<div class="bg-neutral-focus text-neutral-content w-8 rounded-full mr-2">
-						<span class="text-2xl">M</span>
+				<ClientOnly>
+					<div v-if="isAuthenticated" class="avatar">
+						<div id="imageholder" class="w-8 rounded-full mr-2"></div>
 					</div>
-				</div>
+					<div v-if="!isAuthenticated" class="avatar placeholder">
+						<div class="bg-neutral-focus text-neutral-content w-8 rounded-full mr-2">
+							<span class="text-2xl">M</span>
+						</div>
+					</div>
+					<template #fallback>
+						<div class="avatar placeholder">
+							<div class="bg-neutral-focus text-neutral-content w-8 rounded-full mr-2">
+								<span class="text-2xl">M</span>
+							</div>
+						</div>
+					</template>
+				</ClientOnly>
 				<a href="https://git.io/megatank58" class="pr-2">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -52,17 +61,20 @@
 			</div>
 		</div>
 	</div>
-	<router-view />
+	<div>
+		<NuxtLayout>
+			<NuxtPage />
+		</NuxtLayout>
+	</div>
 </template>
 
 <script lang="ts">
-import { useFetch } from '~/util';
-import { defineComponent } from 'vue';
+import { useFetch } from './util';
 
 export default defineComponent({
 	data() {
 		return {
-			isAuthenticated: Boolean(localStorage.getItem('token')),
+			isAuthenticated: Boolean(process.client ? localStorage.getItem('token') : ''),
 		};
 	},
 	async created() {

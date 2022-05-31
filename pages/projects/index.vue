@@ -1,7 +1,7 @@
 <template>
 	<div class="flex items-center flex-col px-4 bg-base-200">
 		<div v-for="(project, index) in projects" :key="project.name + '_' + index" class="w-1/2 m-4">
-			<router-link :to="/projects/ + project.name">
+			<NuxtLink :to="/projects/ + project.name">
 				<div class="card bg-base-300 hover:shadow-md">
 					<div class="card-body">
 						<h2 class="card-title">
@@ -31,13 +31,12 @@
 						</div>
 					</div>
 				</div>
-			</router-link>
+			</NuxtLink>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
 import { Project } from '~/types/Project';
 import { DurationFormatter } from '@sapphire/time-utilities';
 import { useFetch } from '~/util';

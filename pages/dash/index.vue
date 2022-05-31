@@ -64,16 +64,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
 import { Blog } from '~/types/Blog';
-import { parseMarkdown, trim, useFetch } from '~/util';
+import { parseMarkdown, trim, useFetch, getToken } from '~/util';
 
 export default defineComponent({
 	data() {
 		return {
 			blogs: new Array<Blog>(),
 			async deleteBlog(name: string) {
-				useFetch({ route: `/blogs/delete/${name}`, getString: true });
+				useFetch({ route: `/blogs/delete/${name}`, getString: true, token: getToken(), });
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 				document.getElementById(name)?.parentNode?.removeChild(document.getElementById(name)!);
 			},
