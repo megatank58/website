@@ -68,23 +68,15 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { useFetch } from './util';
+<script setup>
+import { getToken, useFetch } from './util';
 
-export default defineComponent({
-	data() {
-		return {
-			isAuthenticated: Boolean(process.client ? localStorage.getItem('token') : ''),
-		};
-	},
-	async created() {
-		if (!this.isAuthenticated) return;
+const isAuthenticated = Boolean(process.client ? localStorage.getItem('token') : '');
 
-		const imageURL = await useFetch<string>({ route: '/avatar', getString: true, body: {} });
+if (!isAuthenticated) return;
 
-		const div = document.getElementById('imageholder');
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		div!.innerHTML = `<img src="${imageURL}" />`;
-	},
-});
+const imageURL = await useFetch({ route: '/avatar', getString: true, token: getToken() });
+
+const div = document.getElementById('imageholder');
+div.innerHTML = `<img src="${imageURL}" />`;
 </script>

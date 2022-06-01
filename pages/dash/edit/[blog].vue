@@ -19,21 +19,7 @@
 			<div class="modal-box">
 				<h3 class="font-bold text-lg">Are you sure you want to upload this blog?</h3>
 				<div
-					class="
-						prose
-						max-w-none
-						mt-2
-						p-4
-						rounded-lg
-						shadow-lg
-						border-t-2 border-l-4 border-neutral-focus
-						prose-pre:p-3 prose-pre:rounded prose-pre:overflow-x-auto
-						prose-a:text-primary prose-a:no-underline
-						prose-img:inline prose-img:m-1
-						prose-p:m-1
-						prose-h1:my-2
-						prose-h2:my-2
-					"
+					class="prose max-w-none mt-2 p-4 rounded-lg shadow-lg border-t-2 border-l-4 border-neutral-focus prose-pre:p-3 prose-pre:rounded prose-pre:overflow-x-auto prose-a:text-primary prose-a:no-underline prose-img:inline prose-img:m-1 prose-p:m-1 prose-h1:my-2 prose-h2:my-2"
 					v-html="renderData"
 				></div>
 				<div class="modal-action">
@@ -45,38 +31,27 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup>
 import { getToken, parseMarkdown, useFetch } from '~/util';
-import { Blog } from '~/types/Blog';
 
-export default defineComponent({
-	data() {
-		return {
-			async postBlog() {
-				useFetch({
-					route: `/blogs/set/${(document.getElementById('name') as HTMLInputElement)?.value}`,
-					body: { content: (document.getElementById('content') as HTMLInputElement).value },
-					token: getToken(),
-				});
-			},
-			async renderBlog() {
-				this.renderData = parseMarkdown(
-					(document.getElementById('content') as HTMLInputElement).value,
-				);
-			},
-			renderData: '',
-		};
-	},
-	async created() {
-		await this.getBlog();
-	},
-	methods: {
-		async getBlog() {
-			const data = await useFetch<Blog>({ route: `/blogs/${this.$route.params.blog}` });
-			(document.getElementById('name') as HTMLInputElement).value = data.name;
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			(document.getElementById('content') as HTMLInputElement).value = data.content!;
-		},
-	},
-});
+let renderData = '';
+
+async function postBlog() {
+	useFetch({
+		route: `/blogs/set/${document.getElementById('name')?.value}`,
+		body: { content: document.getElementById('content').value },
+		token: getToken(),
+	});
+
+	navigateTo({
+		path: '/dash'
+	});
+}
+async function renderBlog() {
+	renderData = parseMarkdown(document.getElementById('content').value);
+}
+
+const data = await useFetch({ route: `/blogs/${useRoute().params.blog}` });
+document.getElementById('name').value = data.name;
+document.getElementById('content').value = data.content;
 </script>

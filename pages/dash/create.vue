@@ -19,21 +19,7 @@
 			<div class="modal-box">
 				<h3 class="font-bold text-lg">Are you sure you want to upload this blog?</h3>
 				<div
-					class="
-						prose
-						max-w-none
-						mt-2
-						p-4
-						rounded-lg
-						shadow-lg
-						border-t-2 border-l-4 border-neutral-focus
-						prose-pre:p-3 prose-pre:rounded prose-pre:overflow-x-auto
-						prose-a:text-primary prose-a:no-underline
-						prose-img:inline prose-img:m-1
-						prose-p:m-1
-						prose-h1:my-2
-						prose-h2:my-2
-					"
+					class="prose max-w-none mt-2 p-4 rounded-lg shadow-lg border-t-2 border-l-4 border-neutral-focus prose-pre:p-3 prose-pre:rounded prose-pre:overflow-x-auto prose-a:text-primary prose-a:no-underline prose-img:inline prose-img:m-1 prose-p:m-1 prose-h1:my-2 prose-h2:my-2"
 					v-html="renderData"
 				></div>
 				<div class="modal-action">
@@ -45,28 +31,22 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup>
 import { getToken, useFetch } from '~/util';
 import { parseMarkdown } from '~/util';
 
-export default defineComponent({
-	data() {
-		return {
-			renderData: '',
-			async postBlog() {
-				await useFetch({
-					route: `/blogs/create/${(document.getElementById('name') as HTMLInputElement)?.value}`,
-					body: { content: (document.getElementById('content') as HTMLInputElement).value },
-					token: getToken(),
-				});
-				alert('Blog posted successfully!');
-			},
-			async renderBlog() {
-				this.renderData = parseMarkdown(
-					(document.getElementById('content') as HTMLInputElement).value,
-				);
-			},
-		};
-	},
-});
+let renderData = '';
+async function postBlog() {
+	await useFetch({
+		route: `/blogs/create/${document.getElementById('name')?.value}`,
+		body: { content: document.getElementById('content').value },
+		token: getToken(),
+	});
+	navigateTo({
+		path: '/dash',
+	});
+}
+async function renderBlog() {
+	renderData = parseMarkdown(document.getElementById('content').value);
+}
 </script>

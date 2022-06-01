@@ -15,7 +15,7 @@
 							<div class="card-actions justify-end pt-1">
 								<div class="badge badge-secondary rounded mr-auto">
 									Updated
-									{{ timestamp.format(Date.now() - new Date(project.updated_at).getTime(), 1) }} ago
+									{{ new DurationFormatter().format(Date.now() - new Date(project.updated_at).getTime(), 1) }} ago
 								</div>
 								<div class="badge badge-info rounded">{{ project.stargazers_count }} Stars</div>
 								<div class="badge badge-info rounded">{{ project.watchers_count }} Watchers</div>
@@ -36,33 +36,19 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { Project } from '~/types/Project';
+<script setup>
 import { DurationFormatter } from '@sapphire/time-utilities';
 import { useFetch } from '~/util';
 
-export default defineComponent({
-	data() {
-		return {
-			projects: new Array<Project>(),
-			timestamp: new DurationFormatter(),
-		};
-	},
-	async created() {
-		await this.getProjects();
-	},
-	methods: {
-		async getProjects() {
-			const data = await useFetch<Project[]>({ route: '/projects' });
+let projects = [];
 
-			this.projects = data
-				.sort((x, y) => {
-					return Number(x.fork) - Number(y.fork);
-				})
-				.filter((project) => {
-					return project.description && project.full_name.toLowerCase() !== 'megatank58/megatank58';
-				});
-		},
-	},
-});
+const data = await useFetch({ route: '/projects' });
+
+projects = data
+	.sort((x, y) => {
+		return Number(x.fork) - Number(y.fork);
+	})
+	.filter((project) => {
+		return project.description && project.full_name.toLowerCase() !== 'megatank58/megatank58';
+	});
 </script>

@@ -9,19 +9,18 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup>
 import { setToken, useFetch } from '~/util';
 
-export default defineComponent({
-	async created() {
-		const token = await useFetch<string>({
-			route: `/auth/${this.$route.params.code}`,
-			getString: true,
-		});
-
-		if (process.client) {
-			setToken(new URLSearchParams(token).get('access_token') ?? '');
-		}
-	},
+const token = await useFetch({
+	route: `/auth/${useRoute().params.code}`,
+	getString: true,
 });
+
+if (process.client) {
+	setToken(new URLSearchParams(token).get('access_token') ?? '');
+	navigateTo({
+		path: '/dash'
+	});
+}
 </script>

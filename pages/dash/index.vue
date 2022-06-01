@@ -38,23 +38,7 @@
 					</h2>
 
 					<div
-						class="
-							prose
-							prose-pre:text-neutral-content
-							prose-pre:p-3
-							prose-pre:rounded
-							prose-pre:overflow-x-auto
-							max-w-none
-							prose-a:text-primary prose-a:no-underline
-							prose-img:inline prose-img:m-1
-							prose-p:m-1
-							prose-h1:border-border prose-h1:border-b prose-h1:mt-1 prose-h1:text-bold
-							prose-h2:border-b
-							prose-h2:mt-1
-							prose-h2:text-bold
-							prose-h2:border-solid
-							prose-h2:border-border
-						"
+						class="prose prose-pre:text-neutral-content prose-pre:p-3 prose-pre:rounded prose-pre:overflow-x-auto max-w-none prose-a:text-primary prose-a:no-underline prose-img:inline prose-img:m-1 prose-p:m-1 prose-h1:border-border prose-h1:border-b prose-h1:mt-1 prose-h1:text-bold prose-h2:border-b prose-h2:mt-1 prose-h2:text-bold prose-h2:border-solid prose-h2:border-border"
 						v-html="blog.header"
 					></div>
 				</div>
@@ -63,36 +47,22 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { Blog } from '~/types/Blog';
+<script setup>
 import { parseMarkdown, trim, useFetch, getToken } from '~/util';
 
-export default defineComponent({
-	data() {
-		return {
-			blogs: new Array<Blog>(),
-			async deleteBlog(name: string) {
-				useFetch({ route: `/blogs/delete/${name}`, getString: true, token: getToken(), });
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				document.getElementById(name)?.parentNode?.removeChild(document.getElementById(name)!);
-			},
-		};
-	},
-	async created() {
-		await this.getBlogs();
-	},
-	methods: {
-		async getBlogs() {
-			const data = await useFetch<Blog[]>({ route: '/blogs' });
-			const blogs = new Array<Blog>();
-			for (const blog of data) {
-				blogs.push({
-					name: blog.name,
-					header: parseMarkdown(trim(blog.content ?? '', 256)),
-				});
-			}
-			this.blogs = blogs.reverse();
-		},
-	},
-});
+async function deleteBlog(name) {
+	useFetch({ route: `/blogs/delete/${name}`, getString: true, token: getToken() });
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	document.getElementById(name)?.parentNode?.removeChild(document.getElementById(name));
+}
+
+let blogs = [];
+const data = await useFetch({ route: '/blogs' });
+for (const blog of data) {
+	blogs.push({
+		name: blog.name,
+		header: parseMarkdown(trim(blog.content ?? '', 256)),
+	});
+}
+blogs = blogs.reverse();
 </script>

@@ -10,16 +10,7 @@
 						</h2>
 
 						<div
-							class="
-								font-mono
-								prose
-								max-w-none
-								prose-a:text-primary prose-a:no-underline
-								prose-img:inline prose-img:m-1
-								prose-p:m-1
-								prose-h1:my-4 prose-h1:border-b
-								prose-h2:my-4 prose-h2:border-b
-							"
+							class="font-mono prose max-w-none prose-a:text-primary prose-a:no-underline prose-img:inline prose-img:m-1 prose-p:m-1 prose-h1:my-4 prose-h1:border-b prose-h2:my-4 prose-h2:border-b"
 							v-html="blog.header"
 						></div>
 					</div>
@@ -29,31 +20,16 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { Blog } from '~/types/Blog';
+<script setup>
 import { parseMarkdown, trim, useFetch } from '~/util';
 
-export default defineComponent({
-	data() {
-		return {
-			blogs: new Array<Blog>(),
-		};
-	},
-	async created() {
-		await this.getBlogs();
-	},
-	methods: {
-		async getBlogs() {
-			const data = await useFetch<Blog[]>({ route: '/blogs' });
-			const blogs = new Array<Blog>();
-			for (const blog of data) {
-				blogs.push({
-					name: blog.name,
-					header: parseMarkdown(trim(blog.content ?? '', 256)),
-				});
-			}
-			this.blogs = blogs.reverse();
-		},
-	},
-});
+const data = await useFetch({ route: '/blogs' });
+let blogs = [];
+for (const blog of data) {
+	blogs.push({
+		name: blog.name,
+		header: parseMarkdown(trim(blog.content ?? '', 256)),
+	});
+}
+blogs = blogs.reverse();
 </script>
