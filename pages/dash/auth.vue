@@ -18,7 +18,7 @@ const token = await useFetch({
 });
 
 if (process.client) {
-	setToken(new URLSearchParams(token).get('access_token') ?? '');
+	localStorage.setItem('token', new URLSearchParams(token).get('access_token') ?? '');
 	navigateTo({
 		path: '/dash'
 	});

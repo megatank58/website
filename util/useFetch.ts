@@ -22,7 +22,3 @@ export async function useFetch<T>(options: FetchOptions): Promise<T> {
 export function getToken(): string {
 	return process.client ? localStorage.getItem('token') : ''
 }
-
-export function setToken(token: string) {
-	process.client ? localStorage.setItem('token', token) : ''
-}
