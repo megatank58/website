@@ -19,7 +19,6 @@ func main() {
 	app.Get("/", routes.Ping)
 	app.Get("/projects", routes.ProjectsGet)
 	app.Get("/blogs", routes.BlogsGet)
-	app.Post("/avatar", routes.AvatarGet)
 	app.Get("/auth/:code", routes.AuthGet)
 	app.Get("/projects/:project", routes.ProjectGet)
 	app.Get("/blogs/:blog", routes.BlogGet)

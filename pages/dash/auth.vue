@@ -9,18 +9,17 @@
 	</div>
 </template>
 
-<script setup lang="ts">
-import { setToken, useFetch } from '~/util';
-
-const token = await useFetch({
-	route: `/auth/${useRouter().currentRoute.value.query.code}`,
-	getString: true,
-});
+<script setup>
+import { useFetch } from '~/util';
 
 if (process.client) {
+	const token = await useFetch({
+		route: `/auth/${useRouter().currentRoute.value.query.code}`,
+		getString: true,
+	});
 	localStorage.setItem('token', new URLSearchParams(token).get('access_token') ?? '');
 	navigateTo({
-		path: '/dash'
+		path: '/dash',
 	});
 }
 </script>

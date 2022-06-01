@@ -5,23 +5,6 @@
 		</div>
 		<div class="navbar-end flex">
 			<div class="flex items-stretch">
-				<ClientOnly>
-					<div v-if="isAuthenticated" class="avatar">
-						<div id="imageholder" class="w-8 rounded-full mr-2"></div>
-					</div>
-					<div v-if="!isAuthenticated" class="avatar placeholder">
-						<div class="bg-neutral-focus text-neutral-content w-8 rounded-full mr-2">
-							<span class="text-2xl">M</span>
-						</div>
-					</div>
-					<template #fallback>
-						<div class="avatar placeholder">
-							<div class="bg-neutral-focus text-neutral-content w-8 rounded-full mr-2">
-								<span class="text-2xl">M</span>
-							</div>
-						</div>
-					</template>
-				</ClientOnly>
 				<a href="https://git.io/megatank58" class="pr-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -67,16 +50,3 @@
 		</NuxtLayout>
 	</div>
 </template>
-
-<script setup>
-import { getToken, useFetch } from './util';
-
-const isAuthenticated = Boolean(process.client ? localStorage.getItem('token') : '');
-
-if (isAuthenticated) {
-	const imageURL = await useFetch({ route: '/avatar', getString: true, token: getToken() });
-
-	const div = document.getElementById('imageholder');
-	div.innerHTML = `<img src="${imageURL}" />`;
-}
-</script>
