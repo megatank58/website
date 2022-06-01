@@ -73,10 +73,10 @@ import { getToken, useFetch } from './util';
 
 const isAuthenticated = Boolean(process.client ? localStorage.getItem('token') : '');
 
-if (!isAuthenticated) return;
+if (isAuthenticated) {
+	const imageURL = await useFetch({ route: '/avatar', getString: true, token: getToken() });
 
-const imageURL = await useFetch({ route: '/avatar', getString: true, token: getToken() });
-
-const div = document.getElementById('imageholder');
-div.innerHTML = `<img src="${imageURL}" />`;
+	const div = document.getElementById('imageholder');
+	div.innerHTML = `<img src="${imageURL}" />`;
+}
 </script>
