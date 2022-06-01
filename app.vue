@@ -22,7 +22,7 @@
 						</div>
 					</template>
 				</ClientOnly>
-				<a href="https://git.io/megatank58" class="pr-2">
+				<a href="https://git.io/megatank58" class="pr-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -40,7 +40,7 @@
 						></path>
 					</svg>
 				</a>
-				<a href="https://twitter.com/Megatank58" class="pl-2">
+				<a href="https://twitter.com/Megatank58" class="pl-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						xmlns:xlink="http://www.w3.org/1999/xlink"
