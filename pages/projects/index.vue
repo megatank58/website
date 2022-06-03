@@ -1,5 +1,5 @@
 <template>
-	<div class="flex items-center flex-col px-4 bg-base-200">
+	<div class="flex items-center flex-col px-4">
 		<div v-for="(project, index) in projects" :key="project.name + index" class="sm:w-1/2 m-4">
 			<NuxtLink :to="/projects/ + project.name">
 				<div class="card bg-base-300 hover:shadow-md">
@@ -13,12 +13,11 @@
 						<p>{{ project.description }}</p>
 						<div>
 							<div class="card-actions justify-end pt-1">
-								<div class="badge badge-secondary rounded mr-auto">
+								<div class="badge badge-warning rounded mr-auto">
 									Updated
 									{{ (new DurationFormatter()).format(Date.now() - new Date(project.updated_at).getTime(), 1) }} ago
 								</div>
-								<div class="badge badge-info rounded">{{ project.stargazers_count }} Stars</div>
-								<div class="badge badge-info rounded">{{ project.watchers_count }} Watchers</div>
+								<div class="badge badge-secondary rounded">{{ project.stargazers_count }} Stars</div>
 							</div>
 							<div class="card-actions">
 								<div v-if="project.language" class="badge badge-error rounded mt-1">

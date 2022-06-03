@@ -1,5 +1,5 @@
 <template>
-	<div class="flex items-center flex-col px-4 bg-base-200">
+	<div class="flex items-center flex-col px-4">
 		<div class="alert shadow-lg w-3/4">
 			<div>
 				<svg
