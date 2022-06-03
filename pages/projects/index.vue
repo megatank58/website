@@ -15,7 +15,7 @@
 							<div class="card-actions justify-end pt-1">
 								<div class="badge badge-secondary rounded mr-auto">
 									Updated
-									{{ new DurationFormatter().format(Date.now() - new Date(project.updated_at).getTime(), 1) }} ago
+									{{ (new DurationFormatter()).format(Date.now() - new Date(project.updated_at).getTime(), 1) }} ago
 								</div>
 								<div class="badge badge-info rounded">{{ project.stargazers_count }} Stars</div>
 								<div class="badge badge-info rounded">{{ project.watchers_count }} Watchers</div>
