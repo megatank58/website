@@ -15,7 +15,7 @@
 							<div class="card-actions justify-end pt-1">
 								<div class="badge badge-warning rounded mr-auto">
 									Updated
-									{{ (new DurationFormatter()).format(Date.now() - new Date(project.updated_at).getTime(), 1) }} ago
+									{{ duration.format(Date.now() - new Date(project.updated_at).getTime(), 1) }} ago
 								</div>
 								<div class="badge badge-secondary rounded">{{ project.stargazers_count }} Stars</div>
 							</div>
@@ -41,6 +41,7 @@ import { useFetch } from '~/util';
 
 let projects = [];
 
+const duration = new DurationFormatter();
 const data = await useFetch({ route: '/projects' });
 
 projects = data
