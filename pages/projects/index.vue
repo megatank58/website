@@ -13,7 +13,7 @@
 						<p>{{ project.description }}</p>
 						<div>
 							<div class="card-actions justify-end pt-1">
-								<div class="badge badge-warning rounded mr-auto">
+								<div class="badge badge-primary rounded mr-auto">
 									Updated
 									{{ duration.format(Date.now() - new Date(project.updated_at).getTime(), 1) }} ago
 								</div>
@@ -44,11 +44,9 @@ let projects = [];
 const duration = new DurationFormatter();
 const data = await useFetch({ route: '/projects' });
 
-console.log(data);
-
 projects = data
 	.sort((x, y) => {
-		return Number(x.fork) - Number(y.fork);
+		return (Date.now() - new Date(x.updated_at).getTime()) - (Date.now() - new Date(y.updated_at).getTime());
 	})
 	.filter((project) => {
 		return project.description && project.full_name.toLowerCase() !== 'megatank58/megatank58';
