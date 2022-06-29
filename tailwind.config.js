@@ -13,22 +13,14 @@ module.exports = {
 			{
 				halloween: {
 					primary: '#2563eb',
-
 					secondary: '#2564f7',
-
 					accent: '#ce9e02',
-
-					neutral: '#181818',
-
-					'base-100': '#202020',
-
-					info: '#43B0CB',
-
-					success: '#18db8d',
-
-					warning: '#F8CE6D',
-
-					error: '#E34A57',
+					neutral: '#1b1d1d',
+					'base-100': '#212121',
+					info: '#2563eb',
+					success: '#16a34a',
+					warning: '#daf23a',
+					error: '#dc2626',
 				},
 			},
 		],

@@ -1,5 +1,5 @@
 <template>
-	<div class="flex items-center flex-col px-4">
+	<div class="flex items-center flex-col px-4 bg-base-200">
 		<div class="alert shadow-lg w-3/4">
 			<div>
 				<svg
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="flex-none">
-				<router-link to="/dash/create" class="btn btn-primary btn-sm">Create</router-link>
+				<a href="/dash/create" class="btn btn-primary btn-sm">Create</a>
 			</div>
 		</div>
 		<div v-for="(blog, index) in blogs" :key="blog + '_' + index" class="w-3/4 m-4">
@@ -32,9 +32,9 @@
 						<button class="ml-auto badge badge-error rounded" @click="deleteBlog(blog.name)">
 							X
 						</button>
-						<router-link :to="'/dash/edit/' + blog.name" class="badge badge-info rounded">
+						<a href="'/dash/edit/' + blog.name" class="badge badge-info rounded">
 							EDIT
-						</router-link>
+						</a>
 					</h2>
 
 					<div

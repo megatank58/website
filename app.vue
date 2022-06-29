@@ -1,7 +1,7 @@
 <template>
 	<div class="navbar mb-2 shadow-xl text-base-content">
 		<div class="pl-1 mx-2 navbar-start">
-			<router-link class="text-lg font-bold text-primary" to="/">Home</router-link>
+			<a class="text-lg font-bold text-primary" href="/">Home</a>
 		</div>
 		<div class="navbar-end flex">
 			<div class="flex items-stretch">

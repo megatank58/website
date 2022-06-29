@@ -1,7 +1,7 @@
 <template>
-	<div class="flex items-center flex-col px-4">
-		<div v-for="(project, index) in projects" :key="project.name + index" class="sm:w-1/2 m-4">
-			<NuxtLink :to="/projects/ + project.name">
+	<div class="flex items-center flex-col px-4 bg-base-200">
+		<div v-for="(project, index) in projects" :key="project.name + index" class="sm:w-1/2 w-full m-4">
+			<a href="/projects/ + project.name">
 				<div class="card bg-base-300 hover:shadow-md">
 					<div class="card-body">
 						<h2 class="card-title">
@@ -17,7 +17,7 @@
 									Updated
 									{{ duration.format(Date.now() - new Date(project.updated_at).getTime(), 1) }} ago
 								</div>
-								<div class="badge badge-secondary rounded">{{ project.stargazers_count }} Stars</div>
+								<div class="badge badge-warning rounded">{{ project.stargazers_count }} Stars</div>
 							</div>
 							<div class="card-actions">
 								<div v-if="project.language" class="badge badge-error rounded mt-1">
@@ -30,7 +30,7 @@
 						</div>
 					</div>
 				</div>
-			</NuxtLink>
+			</a>
 		</div>
 	</div>
 </template>
@@ -43,6 +43,8 @@ let projects = [];
 
 const duration = new DurationFormatter();
 const data = await useFetch({ route: '/projects' });
+
+console.log(data);
 
 projects = data
 	.sort((x, y) => {
