@@ -10,8 +10,9 @@ const config = {
 			postcss: true
 		})
 	],
-
-	adapter: vercel(),
+	kit: {
+		adapter: vercel()
+	}
 };
 
 export default config;
