@@ -8,7 +8,7 @@
 	}
 
 	export async function load() {
-		const url = `https://bd.megatank58.me/blogs`;
+		const url = `https://api.megatank58.tech/blogs`;
 		const response = await fetch(url);
 		const data: Blog[] = await response.json();
 
@@ -39,7 +39,7 @@
 
 <script lang="ts">
 	async function deleteBlog(name: string) {
-		fetch(`https://bd.megatank58.me/blogs/delete/${name}`, {
+		fetch(`https://api.megatank58.tech/blogs/delete/${name}`, {
 			headers: {
 				Authorization: localStorage.getItem('token')!,
 				'Content-Type': 'application/json'

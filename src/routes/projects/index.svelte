@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	export async function load() {
-		const url = `https://bd.megatank58.me/projects`;
+		const url = `https://api.megatank58.tech/projects`;
 		const response = await fetch(url);
 		const data: Project[] = (await response.json())
 			.sort((x: Project, y: Project) => {

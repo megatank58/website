@@ -8,7 +8,7 @@
 	}
 
 	export async function load() {
-		const url = `https://bd.megatank58.me/blogs`;
+		const url = `https://api.megatank58.tech/blogs`;
 		const response = await fetch(url);
 		const data: Blog[] = await response.json();
 

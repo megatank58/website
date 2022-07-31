@@ -4,7 +4,7 @@
 
 	if (browser) {
 		fetch(
-			`https://bd.megatank58.me/auth/${new URLSearchParams(window.location.search).get('code')}`
+			`https://api.megatank58.tech/auth/${new URLSearchParams(window.location.search).get('code')}`
 		).then((token) =>
 			token.text().then((text) => {
 				localStorage.setItem('token', new URLSearchParams(text).get('access_token') ?? '');
