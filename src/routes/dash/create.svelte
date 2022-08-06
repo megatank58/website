@@ -13,7 +13,7 @@
 	let text = '';
 
 	async function postBlog() {
-		await fetch(`/blogs/create/${(<HTMLInputElement>document.getElementById('name')).value}`, {
+		await fetch(`https://api.megatank58.tech/blogs/create/${(<HTMLInputElement>document.getElementById('name')).value}`, {
 			body: JSON.stringify({ content: (<HTMLInputElement>document.getElementById('name')).value }),
 			headers: {
 				Authorization: localStorage.getItem('token')!,
