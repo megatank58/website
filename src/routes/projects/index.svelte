@@ -64,7 +64,7 @@
 <div class="flex items-center flex-col px-4 bg-base-200">
 	<!-- svelte-ignore a11y-label-has-associated-control -->
 	<label
-		class={`relative mx-3 sm:w-1/2 w-full border border-base-300 bg-base-200 rounded`}
+		class={`relative mx-3 sm:w-1/2 w-full border-2 border-base-300 rounded`}
 		bind:this={seachboxEl}
 	>
 		<Typeahead
@@ -144,7 +144,7 @@
 	}
 	[data-svelte-search] input {
 		outline-color: hsla(var(--bc) / 0.1);
-		background-color: hsl(var(--b1));
+		background-color: hsl(var(--b2));
 		color: hsla(var(--bc));
 		border: none;
 		padding-left: 2em;

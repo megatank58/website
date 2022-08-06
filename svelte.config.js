@@ -11,13 +11,8 @@ const config = {
 		})
 	],
 	kit: {
-		adapter: vercel()
+		adapter: vercel(),
 	},
-	vite: {
-		optimizeDeps: {
-			include: ['fuzzy']
-		}
-	}
 };
 
 export default config;

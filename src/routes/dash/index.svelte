@@ -38,6 +38,11 @@
 </script>
 
 <script lang="ts">
+	import { browser } from "$app/env";
+import { goto } from '$app/navigation';
+
+	browser && !localStorage.getItem("token") ? goto("/dash/login") : '' ;
+
 	async function deleteBlog(name: string) {
 		fetch(`https://api.megatank58.tech/blogs/delete/${name}`, {
 			headers: {

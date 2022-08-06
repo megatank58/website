@@ -6,3 +6,5 @@
 		goto('https://github.com/login/oauth/authorize?client_id=afaaed7040a068753964');
 	}
 </script>
+
+<h1>Redirecting...</h1>
