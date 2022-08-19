@@ -13,13 +13,20 @@
 	let text = '';
 
 	async function postBlog() {
-		await fetch(`https://api.megatank58.tech/blogs/create/${(<HTMLInputElement>document.getElementById('name')).value}`, {
-			body: JSON.stringify({ content: (<HTMLInputElement>document.getElementById('name')).value }),
-			headers: {
-				Authorization: localStorage.getItem('token')!,
-				'Content-Type': 'application/json'
+		await fetch(
+			`https://api.megatank58.tech/blogs/create/${
+				(<HTMLInputElement>document.getElementById('name')).value
+			}`,
+			{
+				body: JSON.stringify({
+					content: (<HTMLInputElement>document.getElementById('name')).value
+				}),
+				headers: {
+					Authorization: localStorage.getItem('token')!,
+					'Content-Type': 'application/json'
+				}
 			}
-		});
+		);
 		goto('/dash');
 	}
 

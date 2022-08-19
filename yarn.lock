@@ -105,14 +105,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@playwright/test@^1.22.2":
-  version "1.24.2"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.24.2.tgz#283ea8cc497f9742037458659bf235f4776cf1f0"
-  integrity sha512-Q4X224pRHw4Dtkk5PoNJplZCokLNvVbXD9wDQEMrHcEuvWpJWEQDeJ9gEwkZ3iCWSFSWBshIX177B231XW4wOQ==
-  dependencies:
-    "@types/node" "*"
-    playwright-core "1.24.2"
-
 "@rollup/pluginutils@^4.2.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.2.1.tgz#e6c6c3aba0744edce3fb2074922d3776c0af2a6d"
@@ -142,7 +134,7 @@
     "@sveltejs/adapter-netlify" "1.0.0-next.71"
     "@sveltejs/adapter-vercel" "1.0.0-next.66"
 
-"@sveltejs/adapter-cloudflare@1.0.0-next.31":
+"@sveltejs/adapter-cloudflare@1.0.0-next.31", "@sveltejs/adapter-cloudflare@^1.0.0-next.31":
   version "1.0.0-next.31"
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-cloudflare/-/adapter-cloudflare-1.0.0-next.31.tgz#5d56db9aed0ee0577d31a0291a3fc8b32019c461"
   integrity sha512-HhEFZP72GJ8AZGgFECKIiayDcLaAWi65pI0AnBfiNhCifYSlH/mPNWNVD4AWRDnXnH6XU+FLwhGDnIDwytTyYg==
@@ -161,7 +153,7 @@
     set-cookie-parser "^2.4.8"
     tiny-glob "^0.2.9"
 
-"@sveltejs/adapter-vercel@1.0.0-next.66", "@sveltejs/adapter-vercel@^1.0.0-next.59":
+"@sveltejs/adapter-vercel@1.0.0-next.66":
   version "1.0.0-next.66"
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-vercel/-/adapter-vercel-1.0.0-next.66.tgz#71e4d484b70e6a3c27bf33779bc3f85720da6292"
   integrity sha512-s3Hcxu9nCG/rR3C3cFbdQGjTa5W4K2kRcc6S5Xefx7itbrw+4v3KpO8ZPB6qM55XDwVxuG7260NMHVI6MUGmSA==
@@ -1574,11 +1566,6 @@ pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
-
-playwright-core@1.24.2:
-  version "1.24.2"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.24.2.tgz#47bc5adf3dcfcc297a5a7a332449c9009987db26"
-  integrity sha512-zfAoDoPY/0sDLsgSgLZwWmSCevIg1ym7CppBwllguVBNiHeixZkc1AdMuYUPZC6AdEYc4CxWEyLMBTw2YcmRrA==
 
 postcss-import@^14.1.0:
   version "14.1.0"

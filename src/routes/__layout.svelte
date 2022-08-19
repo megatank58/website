@@ -1,12 +1,14 @@
 <script>
 	import '../app.css';
 	import 'highlight.js/styles/atom-one-dark.css';
-	import { browser } from "$app/env";
+	import { browser } from '$app/env';
 </script>
 
 <div class="navbar mb-2 shadow-xl text-base-content">
 	<div class="pl-1 mx-2 navbar-start">
-		<a class="text-lg font-bold text-primary" href="/">{browser && localStorage.getItem("token") ? "Megatank58" : "Home"}</a>
+		<a class="text-lg font-bold text-primary" href="/"
+			>{browser && localStorage.getItem('token') ? 'Megatank58' : 'Home'}</a
+		>
 	</div>
 	<div class="navbar-end flex">
 		<div class="flex items-stretch">
