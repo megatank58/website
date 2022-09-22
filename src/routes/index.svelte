@@ -9,8 +9,6 @@
 				along with many searches. In the present I'm learning about logic gates and low level
 				languages.
 			</p>
-			<a class="btn btn-primary mr-1" href="/projects">Projects</a>
-			<a class="btn bg-neutral-focus ml-1" href="/blogs">Blogs</a>
 		</div>
 	</div>
 </div>
