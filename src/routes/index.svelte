@@ -41,7 +41,9 @@
 	const duration = new DurationFormatter();
 </script>
 
-<div class="hero min-h-screen">
+<div
+	class="hero min-h-screen transition-opacity duration-1000 ease-out opacity-60 hover:opacity-100"
+>
 	<div class="hero-content flex-col lg:flex-row">
 		<img src="/logo.png" class="float-left pb-2" alt="Avatar of megatank58" />
 		<div>
@@ -49,8 +51,7 @@
 			<p class="py-6">
 				I'm Tanmay, a programmer from India, spending most of time working on random projects and
 				playing games. I've been programming for a few years attaining some knowledge and experience
-				along with many searches. In the present I'm learning about logic gates and low level
-				languages.
+				along with many searches. Scroll below to see my projects
 			</p>
 		</div>
 	</div>
@@ -75,42 +76,40 @@
 <div class="flex items-center flex-col px-4">
 	<div class="font-bold text-2xl">My Projects</div>
 	{#await projects}
-			<div class="sm:w-1/2 w-full m-4">
-				<div class="card bg-base-300 hover:shadow-md motion-safe:animate-pulse space-x-4">
-					<div class="card bg-base-300 hover:shadow-md">
-						<div class="card-body">
-							<h2 class="card-title">
-								<span class="font-extralight"
-									>megatank58/<span class="font-bold">loading</span></span
+		<div class="sm:w-1/2 w-full m-4">
+			<div class="card bg-base-300 hover:shadow-md motion-safe:animate-pulse space-x-4">
+				<div class="card bg-base-300 hover:shadow-md">
+					<div class="card-body">
+						<h2 class="card-title">
+							<span class="font-extralight">megatank58/<span class="font-bold">loading</span></span>
+							{#if Math.random() > 5}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink"
+									width="1em"
+									height="1em"
+									viewBox="0 0 512 512"
+									><path
+										fill="currentColor"
+										d="M124 166.291v179.418a76 76 0 1 0 32 0V282h152a80.091 80.091 0 0 0 80-80v-36.689a75.983 75.983 0 1 0-32 1.733V202a48.055 48.055 0 0 1-48 48H156v-83.709a76 76 0 1 0-32 0ZM324 92a44 44 0 1 1 44 44a44.049 44.049 0 0 1-44-44ZM184 420a44 44 0 1 1-44-44a44.049 44.049 0 0 1 44 44ZM140 48a44 44 0 1 1-44 44a44.049 44.049 0 0 1 44-44Z"
+									/></svg
 								>
-								{#if Math.random() > 5}
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										xmlns:xlink="http://www.w3.org/1999/xlink"
-										width="1em"
-										height="1em"
-										viewBox="0 0 512 512"
-										><path
-											fill="currentColor"
-											d="M124 166.291v179.418a76 76 0 1 0 32 0V282h152a80.091 80.091 0 0 0 80-80v-36.689a75.983 75.983 0 1 0-32 1.733V202a48.055 48.055 0 0 1-48 48H156v-83.709a76 76 0 1 0-32 0ZM324 92a44 44 0 1 1 44 44a44.049 44.049 0 0 1-44-44ZM184 420a44 44 0 1 1-44-44a44.049 44.049 0 0 1 44 44ZM140 48a44 44 0 1 1-44 44a44.049 44.049 0 0 1 44-44Z"
-										/></svg
-									>
-								{/if}
-							</h2>
-							<p>Fetching repositories...</p>
-							<div>
-								<div class="card-actions justify-end pt-1">
-									<div class="badge badge-success rounded mr-auto">few seconds ago</div>
-								</div>
-								<div class="card-actions">
-									<div class="badge badge-error rounded mt-1">Text</div>
-									<div class="badge badge-info rounded ml-auto mt-1">MIT</div>
-								</div>
+							{/if}
+						</h2>
+						<p>Fetching repositories...</p>
+						<div>
+							<div class="card-actions justify-end pt-1">
+								<div class="badge badge-success rounded mr-auto">few seconds ago</div>
+							</div>
+							<div class="card-actions">
+								<div class="badge badge-error rounded mt-1">Text</div>
+								<div class="badge badge-info rounded ml-auto mt-1">MIT</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 	{:then projects}
 		{#each projects as project}
 			<div class="sm:w-1/2 w-full m-4 hide">
