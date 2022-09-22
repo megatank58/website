@@ -3,7 +3,7 @@
 	import hljs from 'highlight.js';
 
 	export async function load({ params }: { params: { project: string } }) {
-		const url = `https://api.megatank58.tech/projects/${params.project}`;
+		const url = `https://raw.githubusercontent.com/Megatank58/${params.project}/main/README.md`;
 		const response = await fetch(url);
 
 		marked.setOptions({

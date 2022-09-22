@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	export async function load({ fetch }: { fetch(url: string): any }) {
-		const url = `https://api.megatank58.tech/projects`;
+		const url = `https://api.github.com/users/megatank58/repos`;
 		const response = await fetch(url);
 		const json = await response.json();
 		const data: Project[] = (json.message ? [] : json)
@@ -119,9 +119,11 @@
 								<div class="badge badge-error rounded mt-1">
 									{language ?? 'Markdown'}
 								</div>
-								<div v-if="project.license" class="badge badge-info rounded ml-auto mt-1">
+								{#if license}
+								<div class="badge badge-info rounded ml-auto mt-1">
 									{license?.name ?? 'MIT License'}
 								</div>
+								{/if}
 							</div>
 						</div>
 					</div>
