@@ -6,9 +6,9 @@
 	if (browser) {
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
-			if (entry.isIntersecting) {
-				entry.target.classList.add('show')
-			}
+				if (entry.isIntersecting) {
+					entry.target.classList.add('show');
+				}
 			});
 		});
 
@@ -38,9 +38,7 @@
 				})
 		)
 	);
-
 	const duration = new DurationFormatter();
-	const samples = new Array(3);
 </script>
 
 <div class="hero min-h-screen">
@@ -58,9 +56,7 @@
 	</div>
 </div>
 <div class="divider">
-	<div
-		class="animate-bounce p-2 w-10 h-10"
-	>
+	<div class="animate-bounce p-2 w-10 h-10">
 		<svg
 			class="w-6 h-6"
 			fill="none"
@@ -79,8 +75,7 @@
 <div class="flex items-center flex-col px-4">
 	<div class="font-bold text-2xl">My Projects</div>
 	{#await projects}
-		{#each samples as _sample}
-			<div class="sm:w-1/2 w-full m-4 hide">
+			<div class="sm:w-1/2 w-full m-4">
 				<div class="card bg-base-300 hover:shadow-md motion-safe:animate-pulse space-x-4">
 					<div class="card bg-base-300 hover:shadow-md">
 						<div class="card-body">
@@ -102,21 +97,20 @@
 									>
 								{/if}
 							</h2>
-							<p>Fetching repository information...</p>
+							<p>Fetching repositories...</p>
 							<div>
 								<div class="card-actions justify-end pt-1">
-									<div class="badge badge-success rounded mr-auto">...</div>
+									<div class="badge badge-success rounded mr-auto">few seconds ago</div>
 								</div>
 								<div class="card-actions">
-									<div class="badge badge-error rounded mt-1">...</div>
-									<div class="badge badge-info rounded ml-auto mt-1">...</div>
+									<div class="badge badge-error rounded mt-1">Text</div>
+									<div class="badge badge-info rounded ml-auto mt-1">MIT</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		{/each}
 	{:then projects}
 		{#each projects as project}
 			<div class="sm:w-1/2 w-full m-4 hide">
