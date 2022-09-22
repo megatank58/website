@@ -82,7 +82,8 @@
 					<div class="card-body">
 						<h2 class="card-title">
 							<span class="font-extralight">megatank58/<span class="font-bold">loading</span></span>
-							{#if Math.random() > 5}
+							{#if Math.random() > 0.5}
+							<div class="tooltip" data-tip="Forked project">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -92,8 +93,8 @@
 									><path
 										fill="currentColor"
 										d="M124 166.291v179.418a76 76 0 1 0 32 0V282h152a80.091 80.091 0 0 0 80-80v-36.689a75.983 75.983 0 1 0-32 1.733V202a48.055 48.055 0 0 1-48 48H156v-83.709a76 76 0 1 0-32 0ZM324 92a44 44 0 1 1 44 44a44.049 44.049 0 0 1-44-44ZM184 420a44 44 0 1 1-44-44a44.049 44.049 0 0 1 44 44ZM140 48a44 44 0 1 1-44 44a44.049 44.049 0 0 1 44-44Z"
-									/></svg
-								>
+									/></svg>
+								</div>
 							{/if}
 						</h2>
 						<p>Fetching repositories...</p>
@@ -121,6 +122,7 @@
 									>{project.owner.login}/<span class="font-bold">{project.name}</span></span
 								>
 								{#if project.fork}
+								<div class="tooltip" data-tip="Forked project">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -130,8 +132,8 @@
 										><path
 											fill="currentColor"
 											d="M124 166.291v179.418a76 76 0 1 0 32 0V282h152a80.091 80.091 0 0 0 80-80v-36.689a75.983 75.983 0 1 0-32 1.733V202a48.055 48.055 0 0 1-48 48H156v-83.709a76 76 0 1 0-32 0ZM324 92a44 44 0 1 1 44 44a44.049 44.049 0 0 1-44-44ZM184 420a44 44 0 1 1-44-44a44.049 44.049 0 0 1 44 44ZM140 48a44 44 0 1 1-44 44a44.049 44.049 0 0 1 44-44Z"
-										/></svg
-									>
+										/></svg>
+									</div>
 								{/if}
 							</h2>
 							<p>{project.description}</p>
