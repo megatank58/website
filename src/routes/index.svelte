@@ -23,27 +23,28 @@
 	}
 
 	const url = `https://api.github.com/users/megatank58/repos`;
-	const projects: Promise<Project[]> = fetch(url).then((res) =>
-		res.json().then((json) =>
-			(json.message ? [] : json)
-				.sort((x: Project, y: Project) => {
-					return (
-						Date.now() -
-						new Date(x.updated_at).getTime() -
-						(Date.now() - new Date(y.updated_at).getTime())
-					);
-				})
-				.filter((project: Project) => {
-					return project.description && project.full_name.toLowerCase() !== 'megatank58/megatank58';
-				})
+	const projects: Promise<Project> = fetch(url).then((res) =>
+		res.json().then(
+			(json) =>
+				(json.message ? [] : json)
+					.sort((x: Project, y: Project) => {
+						return (
+							Date.now() -
+							new Date(x.updated_at).getTime() -
+							(Date.now() - new Date(y.updated_at).getTime())
+						);
+					})
+					.filter((project: Project) => {
+						return (
+							project.description && project.full_name.toLowerCase() !== 'megatank58/megatank58'
+						);
+					})[0]
 		)
 	);
 	const duration = new DurationFormatter();
 </script>
 
-<div
-	class="hero min-h-screen transition-opacity duration-1000 ease-out opacity-60 hover:opacity-100"
->
+<div class="hero min-h-screen transition-opacity duration-1000 ease-out opacity-60 hover:opacity-100">
 	<div class="hero-content flex-col lg:flex-row">
 		<img src="/logo.png" class="float-left pb-2" alt="Avatar of megatank58" />
 		<div>
@@ -56,36 +57,26 @@
 		</div>
 	</div>
 </div>
-<div class="divider">
-	<div class="animate-bounce p-2 w-10 h-10">
-		<svg
-			class="w-6 h-6"
-			fill="none"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			stroke-width="2"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-			style="--darkreader-inline-stroke: currentColor;"
-			data-darkreader-inline-stroke=""
-		>
-			<path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-		</svg>
-	</div>
-</div>
+<div class="divider" />
 <div class="sm:hidden">
 	<div class="flex items-center flex-col px-4">
-		<div class="font-bold text-2xl">My Projects</div>
+		<div
+			class="font-extrabold text-transparent text-4xl bg-clip-text bg-gradient-to-r from-primary to-pink-400"
+		>
+			Last Contribution
+		</div>
 		{#await projects}
-			<div class="sm:w-1/2 w-full m-4">
-				<div class="card bg-base-300 hover:shadow-md motion-safe:animate-pulse space-x-4">
+			<div class="font-bold text-xl">Loading...</div>
+		{:then project}
+			<div class="sm:w-1/2 w-full m-4 hide">
+				<a href={'/projects/' + project.name}>
 					<div class="card bg-base-300 hover:shadow-md">
 						<div class="card-body">
 							<h2 class="card-title">
 								<span class="font-extralight"
-									>megatank58/<span class="font-bold">loading</span></span
+									>{project.owner.login}/<span class="font-bold">{project.name}</span></span
 								>
-								{#if Math.random() > 0.5}
+								{#if project.fork}
 									<div class="tooltip" data-tip="Forked project">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -101,139 +92,95 @@
 									</div>
 								{/if}
 							</h2>
-							<p>Fetching repositories...</p>
+							<p>{project.description}</p>
 							<div>
 								<div class="card-actions justify-end pt-1">
-									<div class="badge badge-success rounded mr-auto">few seconds ago</div>
+									<div class="badge badge-success rounded mr-auto">
+										Updated
+										{duration.format(Date.now() - new Date(project.updated_at).getTime(), 1)} ago
+									</div>
 								</div>
 								<div class="card-actions">
-									<div class="badge badge-error rounded mt-1">Text</div>
-									<div class="badge badge-info rounded ml-auto mt-1">MIT</div>
+									<div class="badge badge-error rounded mt-1">
+										{project.language ?? 'Markdown'}
+									</div>
+									{#if project.license}
+										<div class="badge badge-info rounded ml-auto mt-1">
+											{project.license?.name
+												? project.license?.name.substring(0, 25)
+												: 'MIT License'}
+										</div>
+									{/if}
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
-		{:then projects}
-			{#each projects as project}
-				<div class="sm:w-1/2 w-full m-4 hide">
-					<a href={'/projects/' + project.name}>
-						<div class="card bg-base-300 hover:shadow-md">
-							<div class="card-body">
-								<h2 class="card-title">
-									<span class="font-extralight"
-										>{project.owner.login}/<span class="font-bold">{project.name}</span></span
-									>
-									{#if project.fork}
-										<div class="tooltip" data-tip="Forked project">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink"
-												width="1em"
-												height="1em"
-												viewBox="0 0 512 512"
-												><path
-													fill="currentColor"
-													d="M124 166.291v179.418a76 76 0 1 0 32 0V282h152a80.091 80.091 0 0 0 80-80v-36.689a75.983 75.983 0 1 0-32 1.733V202a48.055 48.055 0 0 1-48 48H156v-83.709a76 76 0 1 0-32 0ZM324 92a44 44 0 1 1 44 44a44.049 44.049 0 0 1-44-44ZM184 420a44 44 0 1 1-44-44a44.049 44.049 0 0 1 44 44ZM140 48a44 44 0 1 1-44 44a44.049 44.049 0 0 1 44-44Z"
-												/></svg
-											>
-										</div>
-									{/if}
-								</h2>
-								<p>{project.description}</p>
-								<div>
-									<div class="card-actions justify-end pt-1">
-										<div class="badge badge-success rounded mr-auto">
-											Updated
-											{duration.format(Date.now() - new Date(project.updated_at).getTime(), 1)} ago
-										</div>
-									</div>
-									<div class="card-actions">
-										<div class="badge badge-error rounded mt-1">
-											{project.language ?? 'Markdown'}
-										</div>
-										{#if project.license}
-											<div class="badge badge-info rounded ml-auto mt-1">
-												{project.license?.name
-													? project.license?.name.substring(0, 25)
-													: 'MIT License'}
-											</div>
-										{/if}
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-			{/each}
 		{/await}
 	</div>
 </div>
 <div class="hidden sm:block">
-	<div class="grid place-items-center">
-		<div class="font-bold text-2xl">My Projects</div>
-	</div>
-
-	{#await projects}
-		<div class="grid place-items-center">
-			<div class="font-bold text-xl">Loading...</div>
+	<div class="grid grid-cols-2 place-items-center">
+		<div
+			class="font-extrabold text-transparent text-4xl bg-clip-text bg-gradient-to-r from-primary to-pink-400"
+		>
+			Last Contribution
 		</div>
-	{:then projects}
-		<div class="grid grid-cols-3 px-4">
-			{#each projects.splice(0, 9) as project}
-				<div class="m-4 hide">
-					<a href={'/projects/' + project.name}>
-						<div class="card bg-base-300 hover:shadow-md">
-							<div class="card-body">
-								<h2 class="card-title">
-									<span class="font-extralight"
-										>{project.owner.login}/<span class="font-bold">{project.name}</span></span
-									>
-									{#if project.fork}
-										<div class="tooltip" data-tip="Forked project">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink"
-												width="1em"
-												height="1em"
-												viewBox="0 0 512 512"
-												><path
-													fill="currentColor"
-													d="M124 166.291v179.418a76 76 0 1 0 32 0V282h152a80.091 80.091 0 0 0 80-80v-36.689a75.983 75.983 0 1 0-32 1.733V202a48.055 48.055 0 0 1-48 48H156v-83.709a76 76 0 1 0-32 0ZM324 92a44 44 0 1 1 44 44a44.049 44.049 0 0 1-44-44ZM184 420a44 44 0 1 1-44-44a44.049 44.049 0 0 1 44 44ZM140 48a44 44 0 1 1-44 44a44.049 44.049 0 0 1 44-44Z"
-												/></svg
-											>
+		{#await projects}
+			<div class="font-bold text-xl">Loading...</div>
+		{:then project}
+			<div class="m-4 hide">
+				<a href={'/projects/' + project.name}>
+					<div class="card bg-base-300 hover:shadow-md rotate-3">
+						<div class="card-body">
+							<h2 class="card-title">
+								<span class="font-extralight"
+									>{project.owner.login}/<span class="font-bold">{project.name}</span></span
+								>
+								{#if project.fork}
+									<div class="tooltip" data-tip="Forked project">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink"
+											width="1em"
+											height="1em"
+											viewBox="0 0 512 512"
+											><path
+												fill="currentColor"
+												d="M124 166.291v179.418a76 76 0 1 0 32 0V282h152a80.091 80.091 0 0 0 80-80v-36.689a75.983 75.983 0 1 0-32 1.733V202a48.055 48.055 0 0 1-48 48H156v-83.709a76 76 0 1 0-32 0ZM324 92a44 44 0 1 1 44 44a44.049 44.049 0 0 1-44-44ZM184 420a44 44 0 1 1-44-44a44.049 44.049 0 0 1 44 44ZM140 48a44 44 0 1 1-44 44a44.049 44.049 0 0 1 44-44Z"
+											/></svg
+										>
+									</div>
+								{/if}
+							</h2>
+							<p>{project.description}</p>
+							<div>
+								<div class="card-actions justify-end pt-1">
+									<div class="badge badge-success rounded mr-auto">
+										Updated
+										{duration.format(Date.now() - new Date(project.updated_at).getTime(), 1)} ago
+									</div>
+								</div>
+								<div class="card-actions">
+									<div class="badge badge-error rounded mt-1">
+										{project.language ?? 'Markdown'}
+									</div>
+									{#if project.license}
+										<div class="badge badge-info rounded ml-auto mt-1">
+											{project.license?.name
+												? project.license?.name.substring(0, 25)
+												: 'MIT License'}
 										</div>
 									{/if}
-								</h2>
-								<p>{project.description}</p>
-								<div>
-									<div class="card-actions justify-end pt-1">
-										<div class="badge badge-success rounded mr-auto">
-											Updated
-											{duration.format(Date.now() - new Date(project.updated_at).getTime(), 1)} ago
-										</div>
-									</div>
-									<div class="card-actions">
-										<div class="badge badge-error rounded mt-1">
-											{project.language ?? 'Markdown'}
-										</div>
-										{#if project.license}
-											<div class="badge badge-info rounded ml-auto mt-1">
-												{project.license?.name
-													? project.license?.name.substring(0, 25)
-													: 'MIT License'}
-											</div>
-										{/if}
-									</div>
 								</div>
 							</div>
 						</div>
-					</a>
-				</div>
-			{/each}
-		</div>
-	{/await}
+					</div>
+				</a>
+			</div>
+		{/await}
+	</div>
 </div>
 <footer class="footer items-center p-4 bg-base-300 mt-2">
 	<div class="items-center grid-flow-col">
