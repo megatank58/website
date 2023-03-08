@@ -3,8 +3,7 @@ import Navbar from "../components/Navbar.astro";
 import Canvas from "@napi-rs/canvas";
 
 const repos = `https://api.github.com/users/megatank58/repos`;
-const template =
-  "https://megatank58.tech/opgtemplate.png";
+const profile = "https://www.megatank58.tech/invertedlogo.png";
 
 const projects = (await (await fetch(repos)).json())
   .sort((x, y) => {
@@ -28,7 +27,7 @@ const projects = (await (await fetch(repos)).json())
     };
   });
 
-for (let i = 0; i < projects.length; i++) {
+for (let i = 0; i < 1; i++) {
   let repo = projects[i].name;
 
   let html = await (
@@ -39,7 +38,20 @@ for (let i = 0; i < projects.length; i++) {
   const match = ogImageRegExp.exec(html);
   let ogImage = match ? match[1] : null;
 
-  if (ogImage.includes("opengraph.githubassets.com")) continue;
+  if (ogImage.includes("opengraph.githubassets.com")) {
+    const canvas = Canvas.createCanvas(1200, 600);
+    const context = canvas.getContext("2d");
+
+    context.drawImage(await Canvas.loadImage(ogImage), 0, 0);
+
+    let img = context.createImageData(200, 200);
+    for (let i = img.data.length; --i >= 0; ) img.data[i] = 2500;
+    context.putImageData(img, 900, 100);
+
+    context.drawImage(await Canvas.loadImage(profile), 750, 20);
+
+    ogImage = canvas.toDataURL();
+  }
 
   projects[i].image = ogImage;
 }
@@ -78,6 +90,7 @@ for (let i = 0; i < projects.length; i++) {
                 id={project.name}
                 src={project.image}
                 alt={project.name}
+                class="invert"
                 crossorigin="anonymous"
               />
             </figure>
