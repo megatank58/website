@@ -27,7 +27,7 @@ const projects = (await (await fetch(repos)).json())
     };
   });
 
-for (let i = 0; i < 1; i++) {
+for (let i = 0; i < projects.length; i++) {
   let repo = projects[i].name;
 
   let html = await (
