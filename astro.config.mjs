@@ -7,11 +7,12 @@ import tailwind from "@astrojs/tailwind";
 import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
-import vercel from "@astrojs/vercel/static";
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), prefetch()],
+  //platform: 'node',
   output: "static",
-  adapter: vercel()
+  //adapter: cloudflare()
 });
