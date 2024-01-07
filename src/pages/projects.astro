@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar.astro";
 import Canvas from "@napi-rs/canvas";
 
 const repos = `https://api.github.com/users/megatank58/repos`;
-const profile = "https://www.megatank58.xyz/invertedlogo.png";
+const profile = "https://raw.githubusercontent.com/megatank58/website/9c1fddea866e80139dd587d99d8600b3bd5686f7/public/invertedlogo.png";
 
 const projects = (await (await fetch(repos)).json())
   .sort((x, y) => {
