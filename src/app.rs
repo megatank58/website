@@ -20,8 +20,12 @@ impl App {
         js_sys::Reflect::set(&config, &"hour".into(), &"numeric".into()).unwrap();
         js_sys::Reflect::set(&config, &"minute".into(), &"numeric".into()).unwrap();
         js_sys::Reflect::set(&config, &"second".into(), &"numeric".into()).unwrap();
+    
+        let locales = &js_sys::Array::new();
 
-        let formatter = js_sys::Intl::DateTimeFormat::new(&js_sys::Array::new(), &config);
+        locales.push(&js_sys::JsString::from("en-US"));
+
+        let formatter = js_sys::Intl::DateTimeFormat::new(&locales, &config);
 
         let date = js_sys::Date::new_0();
 

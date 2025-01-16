@@ -209,15 +209,15 @@ function debugString(val) {
     return className;
 }
 function __wbg_adapter_20(arg0, arg1) {
-    wasm._dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hc5e98a7d52fef70e(arg0, arg1);
+    wasm._dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h98a5c7654f7c0544(arg0, arg1);
 }
 
 function __wbg_adapter_23(arg0, arg1, arg2) {
-    wasm.closure67_externref_shim(arg0, arg1, arg2);
+    wasm.closure55_externref_shim(arg0, arg1, arg2);
 }
 
 function __wbg_adapter_26(arg0, arg1, arg2) {
-    wasm.closure123_externref_shim(arg0, arg1, arg2);
+    wasm.closure126_externref_shim(arg0, arg1, arg2);
 }
 
 async function __wbg_load(module, imports) {
@@ -441,6 +441,10 @@ function __wbg_get_imports() {
         const ret = arg0.parentNode;
         return isLikeNone(ret) ? 0 : addToExternrefTable0(ret);
     };
+    imports.wbg.__wbg_push_737cfc8c1432c2c6 = function(arg0, arg1) {
+        const ret = arg0.push(arg1);
+        return ret;
+    };
     imports.wbg.__wbg_removeAttribute_9cd1896f15d71d8a = function() { return handleError(function (arg0, arg1, arg2) {
         arg0.removeAttribute(getStringFromWasm0(arg1, arg2));
     }, arguments) };
@@ -548,15 +552,15 @@ function __wbg_get_imports() {
         const ret = false;
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper241 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 68, __wbg_adapter_23);
+    imports.wbg.__wbindgen_closure_wrapper197 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 56, __wbg_adapter_23);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper431 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 124, __wbg_adapter_26);
+    imports.wbg.__wbindgen_closure_wrapper435 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 127, __wbg_adapter_26);
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper88 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper89 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 5, __wbg_adapter_20);
         return ret;
     };
@@ -653,7 +657,7 @@ async function __wbg_init(module_or_path) {
     }
 
     if (typeof module_or_path === 'undefined') {
-        module_or_path = new URL('trunk-template_bg.wasm', import.meta.url);
+        module_or_path = new URL('website_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 
