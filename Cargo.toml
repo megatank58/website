@@ -8,4 +8,5 @@ edition = "2021"
 gloo = "0.11.0"
 js-sys = "0.3.77"
 wasm-bindgen = "0.2.100"
-yew = { version="0.20", features=["csr"] }
+yew = { version="0.21", features=["csr"] }
+yew-router = { version="0.18.0" }
