@@ -92,7 +92,7 @@ impl Component for Home {
                                         <a href="https://github.com/megatank58" aria-label="github link"
                                         ><svg
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                class="bg-base-100 btn h-12 w-16 rounded-full"
+                                                class="bg-base-100 btn h-10 w-16 rounded-full"
                                                 viewBox="0 0 24 24"
                                                 ><g
                                                 fill="none"
