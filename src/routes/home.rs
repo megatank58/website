@@ -1,5 +1,7 @@
+use crate::app::Route;
 use gloo::timers::callback::Interval;
 use yew::prelude::*;
+use yew_router::prelude::*;
 
 pub struct Home {
     time: String,
@@ -150,8 +152,8 @@ impl Component for Home {
                                                                                                                 }
                                                                                 { &self.time }</span>
                                         </div>
-                                        <a class="btn btn-primary rounded-full" href="/blogs"
-                                        >{ "Blog" }<svg
+                                        <Link<Route> to={Route::Blogs}
+                                        ><span class="btn btn-primary rounded-full">{ "Blog" }<svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 class="h-5 w-5"
                                                 viewBox="0 0 24 24"
@@ -159,7 +161,7 @@ impl Component for Home {
                                                 fill="currentColor"
                                                 d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10z"
                                                 ></path></svg
-                                        ></a
+                                        ></span></Link<Route>
                                         >
                                 </div>
                                 </div>

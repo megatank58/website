@@ -4,13 +4,16 @@ use yew_router::prelude::*;
 use crate::routes::{blogs::Blogs, home::Home};
 
 #[derive(Clone, Routable, PartialEq)]
-enum Route {
+pub enum Route {
     #[at("/")]
     Home,
     #[at("/blogs")]
     Blogs,
     #[at("/blog/:id")]
     Blog { id: String },
+    #[not_found]
+    #[at("/404")]
+    NotFound,
 }
 
 fn switch(route: Route) -> Html {
@@ -18,6 +21,7 @@ fn switch(route: Route) -> Html {
         Route::Home => html! { <Home /> },
         Route::Blogs => html! { <Blogs /> },
         Route::Blog { .. } => todo!(),
+        Route::NotFound => html! { "404" },
     }
 }
 

@@ -5,14 +5,16 @@
   "scripts": {
     "setup": "rustup target add wasm32-unknown-unknown && cargo install trunk && yarn install",
     "dev": "concurrently \"yarn dev:css\" \"yarn dev:serve\"",
-    "dev:css": "tailwindcss -c tailwind.config.mjs -o src/tailwind.css --watch",
+    "dev:css": "tailwindcss -i app.css -o src/tailwind.css --watch",
     "dev:serve": "trunk serve",
     "prod": "yarn prod:css && trunk build --release",
-    "prod:css": "tailwindcss -c tailwind.config.mjs -o src/tailwind.css --minify"
+    "prod:css": "tailwindcss -i app.css -o src/tailwind.css --minify"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.0.3",
+    "@tailwindcss/postcss": "^4.0.3",
     "concurrently": "^7.6.0",
-    "tailwindcss": "^3.2.7",
-    "daisyui": "^4.12.23"
+    "daisyui": "^5.0.0-beta.6",
+    "tailwindcss": "^4.0.3"
   }
 }
