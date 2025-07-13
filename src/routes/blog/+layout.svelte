@@ -18,11 +18,24 @@
 				<a href="/blog/calcagebra">
 					<div class="list-col-grow">
 						<div class="font-lg flex font-bold">
-							Calcagebra
+							What is calcagebra
 							<div class="ml-auto text-xs opacity-40">[13th July 2025]</div>
 						</div>
 						<div class="text-xs font-semibold italic opacity-60">
 							mathematical expression evaluator
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="list-row hover:bg-base-300 m-1">
+				<a href="/blog/calcagebra">
+					<div class="list-col-grow">
+						<div class="font-lg flex font-bold">
+							Fundamental issue with calcagebra
+							<div class="ml-auto text-xs opacity-40">[13th July 2025]</div>
+						</div>
+						<div class="text-xs font-semibold italic opacity-60">
+							need of massive rewrite
 						</div>
 					</div>
 				</a>
