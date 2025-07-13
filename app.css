@@ -1,5 +1,0 @@
-@import "tailwindcss";
-@plugin "daisyui" {
-    themes: forest --default;
-    include: hero, button, card, timeline;
-}
