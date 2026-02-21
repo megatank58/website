@@ -87,16 +87,6 @@
 						{/if}{time}</span
 					>
 				</div>
-				<a href="/blog/fundamental-issue-with-calcagebra"
-					><span class="btn btn-neutral rounded-full hover:btn-primary"
-						>Blogs<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24"
-							><path
-								fill="currentColor"
-								d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10z"
-							></path></svg
-						></span
-					></a
-				>
 			</div>
 		</div>
 	</div>
